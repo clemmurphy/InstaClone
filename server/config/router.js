@@ -1,5 +1,5 @@
 import express from 'express'
-import { addComment, getAllComments } from '../controllers/comments.js'
+import { addComment, deleteComment, getAllComments } from '../controllers/comments.js'
 import { getAllPosts, addPost, updatePost, getSinglePostById, deletePost } from '../controllers/posts.js'
 
 const router = express.Router()
@@ -16,6 +16,9 @@ router.route('/p/:id')
 router.route('/c')
   .get(getAllComments)
   .post(addComment)
+router.route('/c/:id')
+  .delete(deleteComment)
+  
 
 
 export default router

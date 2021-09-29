@@ -23,3 +23,16 @@ export const addComment = async (req, res) => {
     return res.status(422).json(error)
   }
 }
+
+export const deleteComment = async (req,res) => {
+  try {
+    const { id } = req.params
+    const commentToDelete = await Comment.findById(id)
+    if (!commentToDelete) throw new Error()
+    await commentToDelete.remove()
+    return res.sendStatus(204)
+  } catch (error) {
+    console.log(error)
+    res.status(404).json({ message: 'comment not found' })
+  }
+}
