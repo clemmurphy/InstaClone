@@ -1,12 +1,29 @@
 import express from 'express'
-import { getAllPosts } from '../controllers/posts.js'
+import { addComment, deleteComment, getAllComments } from '../controllers/comments.js'
+import { getAllPosts, addPost, updatePost, getSinglePostById, deletePost } from '../controllers/posts.js'
 import { getAllUsers, createNewUser, getSingleUser, loginUser } from '../controllers/auth.js'
 
 const router = express.Router()
 
-router.route('/posts')
+// POST ROUTES
+router.route('/p')
   .get(getAllPosts)
+  .post(addPost)
 
+router.route('/p/:id')
+  .get(getSinglePostById)
+  .put(updatePost)
+  .delete(deletePost)
+
+// COMMENT ROUTES
+router.route('/c')
+  .get(getAllComments)
+  .post(addComment)
+
+router.route('/c/:id')
+  .delete(deleteComment)
+
+// USER ROUTES
 // Get all users
 router.route('/u/')
   .get(getAllUsers)
@@ -22,5 +39,3 @@ router.route('/login')
 // Register Route
 router.route('/register')
   .post(createNewUser)
-
-export default router

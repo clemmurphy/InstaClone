@@ -3,8 +3,10 @@ import dotenv from 'dotenv'
 dotenv.config()
 import User from '../models/user.js'
 import Post from '../models/post.js'
+import Comment from '../models/comment.js'
 import postData from './db/posts.js'
 import userData from './db/users.js'
+import commentData from './db/comments.js'
 
 const seedDatabase = async () => {
   try {
@@ -19,6 +21,9 @@ const seedDatabase = async () => {
 
     const posts = await Post.create(postData)
     console.log(`✍ Created ${posts.length} new posts`)
+
+    const comments = await Comment.create(commentData)
+    console.log(`Created ${comments.length} new comments`)
 
     await mongoose.connection.close()
     console.log('✌ All done now. Byeee!')
