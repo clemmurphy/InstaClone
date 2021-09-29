@@ -34,4 +34,11 @@ userSchema
     next()
   })
 
+// SAVE STAGE
+
+// Check plain text password from input against stored hash
+userSchema.methods.validatePassword = function(password) {
+  return bcrypt.compareSync(password, this.password)
+}
+
 export default mongoose.model('User', userSchema)
