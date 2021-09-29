@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 dotenv.config
-import User from '../models/user'
+import User from '../models/user.js'
 
 export const secureRoute = async (req, res, next) => {
   try {
@@ -17,6 +17,8 @@ export const secureRoute = async (req, res, next) => {
     // Query user model by id in payload
     const userToVerify = await User.findById(payload.sub)
     if (!userToVerify) throw new Error('User not found')
+
+    req.currentUser = userToVerify
 
     // If it passes all tests, pass through
     next()
