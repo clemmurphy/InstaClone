@@ -37,6 +37,7 @@ export const getSinglePostById = async (req,res) => {
   }
 }
 
+// TODO - add user verification
 
 // update post without user authentication and owner verification 
 export const updatePost = async (req,res) =>{
