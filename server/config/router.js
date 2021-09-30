@@ -17,11 +17,13 @@ router.route('/p/:id')
   .put(secureRoute, updatePost)
   .delete(secureRoute, deletePost)
 
+router.route('/p/:id/comment')
+  .post(secureRoute, addComment)
+
 // COMMENT ROUTES
 router.route('/c')
   .get(getAllComments)
-  .post(secureRoute, addComment)
-
+  
 router.route('/c/:id')
   .delete(secureRoute, deleteComment)
 

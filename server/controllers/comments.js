@@ -1,4 +1,5 @@
 import Comment from '../models/comment.js'
+import Post from '../models/post.js'
 
 // get all comments 
 export const getAllComments = async (_req, res) => {
@@ -11,11 +12,17 @@ export const getAllComments = async (_req, res) => {
   }
 }
 
-
 // add new comment
 export const addComment = async (req, res) => {
   try { 
-    const newComment = await Comment.create(req.body)
+    const { id } = req.params
+    const findPost = await Post.findById(id)
+    const userId = await req.currentUser._id
+    const newComment = await Comment.create(
+      { content: req.body.content,
+        owner: userId,
+        parentPost: findPost 
+      })
     res.status(201).json(newComment)
   } catch (error) {
     console.log(error)
@@ -24,12 +31,14 @@ export const addComment = async (req, res) => {
   }
 }
 
+// Delete a comment
 export const deleteComment = async (req,res) => {
   try {
     const { id } = req.params
     const commentToDelete = await Comment.findById(id)
     if (!commentToDelete) throw new Error()
     await commentToDelete.remove()
+    console.log('Deleted comment')
     return res.sendStatus(204)
   } catch (error) {
     console.log(error)
