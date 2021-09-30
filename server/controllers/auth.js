@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken'
 
 // Get all users
 export const getAllUsers = async (_req, res) => {
+
   try {
     const users = await User.find()
     console.log(users)
@@ -14,6 +15,7 @@ export const getAllUsers = async (_req, res) => {
     console.log('🚫 Error getting all users')
     return res.status(422).json('Error')
   }
+  
 }
 
 // Get single user by username
