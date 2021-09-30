@@ -44,7 +44,7 @@ router.route('/register')
 
 // Follow/unfollow Route
 router.route('/f/:id')
-  .post(secureRoute, followUser)
+  .put(secureRoute, followUser)
   .delete(secureRoute, unfollowUser)
 
 export default router
