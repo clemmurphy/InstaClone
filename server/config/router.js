@@ -1,6 +1,6 @@
 import express from 'express'
 import { addComment, deleteComment, getAllComments } from '../controllers/comments.js'
-import { getAllPosts, addPost, updatePost, getSinglePostById, deletePost } from '../controllers/posts.js'
+import { getAllPosts, addPost, updatePost, getSinglePostById, deletePost, addLikeToPost } from '../controllers/posts.js'
 import { getAllUsers, createNewUser, getSingleUser, loginUser } from '../controllers/auth.js'
 
 const router = express.Router()
@@ -14,6 +14,7 @@ router.route('/p/:id')
   .get(getSinglePostById)
   .put(updatePost)
   .delete(deletePost)
+
 
 // COMMENT ROUTES
 router.route('/c')
@@ -39,3 +40,5 @@ router.route('/login')
 // Register Route
 router.route('/register')
   .post(createNewUser)
+
+export default router

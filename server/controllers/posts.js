@@ -15,6 +15,7 @@ export const getAllPosts = async (_req, res) => {
 // add new post without the user authentication and owner verification
 export const addPost = async (req, res) => {
   try { 
+    
     const newPost = await Post.create(req.body)
     res.status(201).json(newPost)
   } catch (error) {
@@ -36,7 +37,6 @@ export const getSinglePostById = async (req,res) => {
     return res.status(404).json({ message: ' post not found' })
   }
 }
-
 
 // update post without user authentication and owner verification 
 export const updatePost = async (req,res) =>{
