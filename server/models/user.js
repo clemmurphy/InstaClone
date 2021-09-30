@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
   username: { type: String, required: true, maxlength: 30, unique: true },
   email: { type: String, required: true, maxlength: 50, unique: true },
   profilePicture: { type: String, required: true },
-  password: { type: String, required: true, maxlength: 30 },
+  password: { type: String, required: true },
   followers: [ { type: mongoose.Schema.ObjectId, ref: 'User' } ],
   following: [ { type: mongoose.Schema.ObjectId, ref: 'User' } ]
 })
@@ -35,6 +35,7 @@ userSchema
   })
 
 // SAVE STAGE
+userSchema.set('toJSON')
 
 // Check plain text password from input against stored hash
 userSchema.methods.validatePassword = function(password) {

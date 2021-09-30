@@ -3,27 +3,28 @@ import { addComment, deleteComment, getAllComments } from '../controllers/commen
 import { getAllPosts, addPost, updatePost, getSinglePostById, deletePost, likePost, unLikePost } from '../controllers/posts.js'
 import { getAllUsers, createNewUser, getSingleUser, loginUser } from '../controllers/auth.js'
 import { secureRoute } from './secureRoute.js'
+import { followUser, unfollowUser } from '../controllers/follow.js'
 
 const router = express.Router()
 
 // POST ROUTES
 router.route('/p')
   .get(getAllPosts)
-  .post(addPost)
+  .post(secureRoute, addPost)
 
 router.route('/p/:id')
   .get(getSinglePostById)
-  .put(updatePost)
-  .delete(deletePost)
+  .put(secureRoute, updatePost)
+  .delete(secureRoute, deletePost)
 
 
 // COMMENT ROUTES
 router.route('/c')
   .get(getAllComments)
-  .post(addComment)
+  .post(secureRoute, addComment)
 
 router.route('/c/:id')
-  .delete(deleteComment)
+  .delete(secureRoute, deleteComment)
 
 // USER ROUTES
 // Get all users
@@ -46,5 +47,10 @@ router.route('/register')
 router.route('/p/:id/like')
   .put(secureRoute, likePost)
   .delete(secureRoute, unLikePost)
+  
+// Follow/unfollow Route
+router.route('/f/:id')
+  .put(secureRoute, followUser)
+  .delete(secureRoute, unfollowUser)
 
 export default router
