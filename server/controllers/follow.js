@@ -8,25 +8,20 @@ export const followUser = async (req, res) => {
     const userToFollow = await User.findById(id)
     const currentUser = await User.findById(req.currentUser._id)
 
-    console.log(`current user: ${currentUser}`)
-    console.log(`user to follow: ${userToFollow}`)
+    console.log(`current user: ${currentUser._id}`)
+    console.log(`user to follow: ${userToFollow._id}`)
 
     // Check to see if they are already following
-    console.log(await User.find({ followers: [ currentUser ] }))
-    if (await User.find({ followers: [ currentUser ] }).length > 0) {
-      console.log('You\'re already following them')
-      throw new Error('User already followed')
-    }
-    console.log('Not already following')
+
     // Add to followers and following
-    userToFollow.followers.push(currentUser._id)
-    currentUser.following.push(userToFollow._id)
+    await userToFollow.followers.push(req.currentUser._id)
+    await currentUser.following.push(userToFollow._id)
 
     console.log(userToFollow.followers)
     console.log(currentUser.following)
 
-    userToFollow.save()
-    currentUser.save()
+    await userToFollow.save().catch(err => console.log(err))
+    await currentUser.save().catch(err => console.log(err))
 
     res.status(200).json(`Followed ${userToFollow.username}`)
     
