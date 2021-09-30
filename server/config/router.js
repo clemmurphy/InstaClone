@@ -1,6 +1,6 @@
 import express from 'express'
 import { addComment, deleteComment, getAllComments } from '../controllers/comments.js'
-import { getAllPosts, addPost, updatePost, getSinglePostById, deletePost } from '../controllers/posts.js'
+import { getAllPosts, addPost, updatePost, getSinglePostById, deletePost, addLikeToPost } from '../controllers/posts.js'
 import { getAllUsers, createNewUser, getSingleUser, loginUser } from '../controllers/auth.js'
 import { secureRoute } from './secureRoute.js'
 import { followUser, unfollowUser } from '../controllers/follow.js'
@@ -16,6 +16,7 @@ router.route('/p/:id')
   .get(getSinglePostById)
   .put(secureRoute, updatePost)
   .delete(secureRoute, deletePost)
+
 
 // COMMENT ROUTES
 router.route('/c')

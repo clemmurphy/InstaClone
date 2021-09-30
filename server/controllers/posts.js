@@ -15,6 +15,7 @@ export const getAllPosts = async (_req, res) => {
 // add new post without the user authentication and owner verification
 export const addPost = async (req, res) => {
   try { 
+    
     const newPost = await Post.create(req.body)
     res.status(201).json(newPost)
   } catch (error) {
