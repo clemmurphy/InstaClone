@@ -23,7 +23,7 @@ const seedDatabase = async () => {
     console.log(`✍ Created ${posts.length} new posts`)
 
     const comments = await Comment.create(commentData)
-    console.log(`Created ${comments.length} new comments`)
+    console.log(`✍ Created ${comments.length} new comments`)
 
     await mongoose.connection.close()
     console.log('✌ All done now. Byeee!')
