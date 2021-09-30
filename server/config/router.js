@@ -17,7 +17,6 @@ router.route('/p/:id')
   .put(secureRoute, updatePost)
   .delete(secureRoute, deletePost)
 
-
 // COMMENT ROUTES
 router.route('/c')
   .get(getAllComments)
@@ -47,7 +46,7 @@ router.route('/register')
 router.route('/p/:id/like')
   .put(secureRoute, likePost)
   .delete(secureRoute, unLikePost)
-  
+
 // Follow/unfollow Route
 router.route('/f/:id')
   .put(secureRoute, followUser)
