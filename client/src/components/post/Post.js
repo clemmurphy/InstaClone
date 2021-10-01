@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
+import CommentForm from './CommentForm'
 
 function Post() {
   const [post, setpost] = useState([])
@@ -29,10 +30,7 @@ function Post() {
             <div className="card-body">
               <p>{ post.caption }</p>
               <p>&hearts; <span>10000</span></p>
-              <form className="d-flex justify-content-between">
-                <textarea className="fomr-control flex-grow-1"></textarea>
-                <button style={{ marginLeft: '10px'}} className="btn btn-dark btn-lg">Comment</button>
-              </form>
+              <CommentForm />
               <p>comment1</p>
               <p>comment2</p>
             </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import CommentForm from './post/CommentForm'
 
 function Timeline() {
   const [timeLine, setTimeLine] = useState([])
@@ -21,16 +22,13 @@ function Timeline() {
             <div className="row">
               <div className="col-12 col-md-6">
                 <div className="card mb-4">
-                  <div className="card-image w-100">
+                  <div className="card-image">
                     <img style={{ width: '100%'}} src={tl.contentUrl} alt='post picutre' />
                   </div>
                   <div className="card-body">
                     <p>{ tl.caption }</p>
                     <p>&hearts; <span>10000</span></p>
-                    <form className="d-flex justify-content-between">
-                      <textarea className="fomr-control flex-grow-1"></textarea>
-                      <button style={{ marginLeft: '10px'}} className="btn btn-dark btn-lg">Comment</button>
-                    </form>
+                    <CommentForm />
                     <p>comment1</p>
                     <p>comment2</p>
                   </div>
