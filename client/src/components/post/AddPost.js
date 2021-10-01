@@ -1,6 +1,6 @@
 import React from 'react'
 
-function PostCreate() {
+function AddPost() {
   return (
     <div>
       create post
@@ -8,4 +8,4 @@ function PostCreate() {
   )
 }
 
-export default PostCreate
+export default AddPost
