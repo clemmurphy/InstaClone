@@ -16,7 +16,7 @@ const startServer = async () => {
     app.use(express.json())
     
     // Router
-    app.use(router)
+    app.use('/api',router)
 
     // Log every request
     app.use((req, _res, next) => {

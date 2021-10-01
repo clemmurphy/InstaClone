@@ -4,7 +4,7 @@ import axios from 'axios'
 
 function AddPost() {
   const history = useHistory()
-  const [postData, setPostData] = useState({
+  const [ postData, setPostData ] = useState({
     contentUrl:'',
     caption:''
   })
