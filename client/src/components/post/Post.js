@@ -29,7 +29,7 @@ function Post() {
             </div>
             <div className="card-body">
               <p>{ post.caption }</p>
-              <p>&hearts; <span>10000</span></p>
+              <p>&hearts; <span>1000</span></p>
               <CommentForm />
               <p>comment1</p>
               <p>comment2</p>

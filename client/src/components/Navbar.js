@@ -3,14 +3,16 @@ import { Link } from 'react-router-dom'
 
 function Navbar() {
   return (
-    <header>
-      <div className="navbar-brand"> <Link to='/'>Insta Clone</Link></div>
-      <nav>
-        <ul>
-          <li><Link to='/login'>login</Link></li>
-          <li><Link to='/register'>register</Link></li>
-        </ul>
-      </nav>
+    <header className="navbar">
+      <div className="container">
+          <div className="navbar-brand"> <Link to='/'>Insta Clone</Link></div>
+          <nav>
+            <ul className="navbar-nav">
+              <li className="nav-item"><Link  className="nav-link" to='/login'>login</Link></li>
+              <li className="nav-item"><Link className="nav-link" to='/register'>register</Link></li>
+            </ul>
+          </nav>
+      </div>
     </header>
   )
 }
