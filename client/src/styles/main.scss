@@ -8,3 +8,34 @@
 .form-control-file {
   display: none;
 }
+a {
+  text-decoration: none;
+  color: black
+}
+// make the color white for the login button in the homepage
+.btn-dark {
+  a {
+    color: white;
+  }
+}
+
+// margin right for login button in the homepage
+.bmr {
+  margin-right: 10px;
+}
+
+// home image
+.home-image{
+  height: 400px;
+  background-size: cover;
+}
+// for the buttons in the homepage
+.mt-7{
+
+  margin-top: 125px;
+}
+
+// heart span in the footer
+.footer-heart {
+  color: red;
+}

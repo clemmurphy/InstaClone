@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import CommentForm from './post/CommentForm'
 
+import AddPost from './post/AddPost'
+
 function Timeline() {
   const [timeLine, setTimeLine] = useState([])
 
@@ -16,6 +18,7 @@ function Timeline() {
   },[])
   return (
     <>
+      <AddPost />
       {timeLine.map(tl => {
         return(
           <div key={tl._id} className="container">
