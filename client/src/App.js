@@ -7,6 +7,9 @@ import Home from './components/Home'
 import Navbar from './components/Navbar'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
+import Post from './components/post/Post'
+import AddPost from './components/post/AddPost'
+import Timeline from './components/Timeline'
 
 function App() {
 
@@ -89,6 +92,15 @@ function App() {
             handleImageUrl={handleImageUrl}
             imageUrl={imageUrl}
           />
+        </Route>
+        <Route path='/p/:id'>
+          <Post />
+        </Route>
+        <Route path='/add-post'>
+          <AddPost />
+        </Route>
+        <Route path='/t'>
+        <Timeline />
         </Route>
       </Switch>
     </BrowserRouter>
