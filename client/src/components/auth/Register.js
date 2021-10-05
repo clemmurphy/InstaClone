@@ -13,7 +13,7 @@ const Register = ({ handleChange, handleImageUrl, imageUrl, formData }) => {
     try {
       const { data } = await axios.post('/api/register', formData)
       console.log(data)
-      history.push('/')
+      history.push('/login')
     } catch (err) {
       console.log('Unable to handle form', err)
     }
