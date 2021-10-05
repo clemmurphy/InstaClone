@@ -44,10 +44,8 @@ export const unfollowUser = async (req, res) => {
 
     // Create updated followers and following arrays
     const updatedFollowers = userToUnfollow.followers.pull(currentUser._id)
-    console.log('Updated Followers:', updatedFollowers)
 
     const updatedUserFollowing = currentUser.following.pull(id)
-    console.log('Updated Following:', updatedUserFollowing)
 
     // Update user models with followers and following
     await User.updateOne({ _id: id }, { followers: updatedFollowers })

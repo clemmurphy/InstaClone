@@ -110,3 +110,16 @@ export const deletePost = async (req,res) => {
     res.status(404).json({ message: 'post not found' })
   }
 }
+
+export const getPostsByUser = async (req, res) => {
+  try {
+    const { id } = req.params
+    const userPosts = await Post.find({ owner: id })
+    console.log('Fetched user posts')
+    if (!userPosts) throw new Error('User has no posts!')
+    return res.status(200).json({ posts: userPosts })
+  } catch (err) {
+    console.log(err)
+    res.status(404).json({ message: 'Couldn\'t get user posts' })
+  }
+}

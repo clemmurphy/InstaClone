@@ -58,7 +58,9 @@ export const loginUser = async (req, res) => {
     console.log('User login token:', token)
     return res.status(200).json({
       message: `Welcome back ${userToLogin.username}`,
-      token
+      token,
+      id: userToLogin._id,
+      username: userToLogin.username
     })
   } catch (err) {
     console.log('🚫 Error logging in')
