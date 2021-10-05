@@ -23,6 +23,7 @@ export const addComment = async (req, res) => {
         owner: userId,
         parentPost: findPost 
       })
+    findPost.comments.push(newComment.content)
     res.status(201).json(newComment)
   } catch (error) {
     console.log(error)
