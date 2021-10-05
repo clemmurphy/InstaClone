@@ -52,39 +52,6 @@ function App() {
   }, [formData])
 
   return (
-<<<<<<< HEAD
-    <div className="d-flex flex-column justify-content-between vh-100">
-        <BrowserRouter>
-          <Navbar />
-          <Switch>
-            <Route exact path='/'>
-              <Home />
-            </Route>
-            <Route path='/login'>
-              <Login
-                handleChange={handleChange}
-                handleSubmit={handleSubmit} 
-              />
-            </Route>
-            <Route path='/register'>
-              <Register
-                handleChange={handleChange}
-                handleSubmit={handleSubmit}
-                handleImageUrl={handleImageUrl}
-                imageUrl={imageUrl}
-              />
-            </Route>
-            <Route path='/p/:id'>
-              <Post />
-            </Route>
-            <Route path='/t'>
-            <Timeline />
-            </Route>
-          </Switch>
-        < Footer />
-        </BrowserRouter>
-  </div>
-=======
     <BrowserRouter>
       <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Switch>
@@ -110,15 +77,12 @@ function App() {
         <Route path='/p/:id'>
           <Post />
         </Route>
-        <Route path='/add-post'>
-          <AddPost />
-        </Route>
         <Route path='/t'>
         <Timeline />
         </Route>
       </Switch>
+    <Footer />
     </BrowserRouter>
->>>>>>> 4f6f063633d1b16d57e31559b4bc89891de898ff
   )
 }
 

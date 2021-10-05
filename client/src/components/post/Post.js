@@ -5,6 +5,7 @@ import CommentForm from './CommentForm'
 
 function Post() {
   const [post, setpost] = useState([])
+ 
 
   const { id } = useParams()
   console.log(id)
@@ -18,6 +19,7 @@ function Post() {
     getPost()
 
   },[id])
+  
 
   return (
     <div className="container">
@@ -31,8 +33,7 @@ function Post() {
               <p>{ post.caption }</p>
               <p>&hearts; <span>1000</span></p>
               <CommentForm />
-              <p>comment1</p>
-              <p>comment2</p>
+              <p>coment1</p>
             </div>
           </div>
         </div>

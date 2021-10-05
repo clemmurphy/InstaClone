@@ -20,7 +20,7 @@ const Login = ({ handleChange, formData, setLoggedIn }) => {
       console.log(data.message)
       setTokenToLocalStorage(data.token)
       setLoggedIn(true)
-      history.push('/')
+      history.push('/t')
     } catch (err) {
       console.log('Unable to handle form', err)
     }
