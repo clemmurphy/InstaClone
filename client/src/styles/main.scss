@@ -55,7 +55,15 @@ $post-width: 30%;
 
 .login-form {
   height: 100vh;
-  padding-top: 10%;
+  padding-top: 40px;
+}
+
+.login-form form {
+  width: 60%;
+}
+
+.login-button {
+  width: 100%;
 }
 
 .registration-image {
@@ -73,4 +81,8 @@ $post-width: 30%;
 
 .timeline-wrapper {
   width: 100vw;
+}
+
+.error-body {
+  padding: 10;
 }
