@@ -25,7 +25,7 @@ const Register = ({ handleChange, handleSubmit, handleImageUrl, imageUrl }) => {
       <div className="mb-3">
         <div className='form-control d-flex flex-column align-items-center justify-content-center'>
           <input type="file" name="profilePicture" id="profilePicture" className="form-control-file" onChange={handleImageUrl}></input>
-          <label Htmlfor="profilePicture">
+          <label htmlFor="profilePicture">
           <div className="profile-image rounded-circle mb-4 mt-2">
             {imageUrl ? <img src={imageUrl} alt="User profile" className="rounded-circle w-100 h-100 img-thumbnail" />
             :

@@ -10,6 +10,8 @@ import Register from './components/auth/Register'
 import Post from './components/post/Post'
 import Timeline from './components/Timeline'
 import Footer from './components/Footer'
+import dotenv from 'dotenv'
+dotenv.config()
 
 function App() {
 
