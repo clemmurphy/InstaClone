@@ -16,9 +16,20 @@ userSchema.virtual('passwordConfirmation')
     this._passwordConfirmation = passwordConfirmation
   })
 
+// Remove password from the populated user object
+userSchema.set('toJSON', {
+  virtuals: true,
+  transform(_doc, json){ // first argument is the doc, which we're not using, second is the json which mirrors the doc, but isn't the doc
+    delete json.password
+    return json
+  }
+})
+
 // PRE VALIDATE
+// check password matches passwordConfirmation
 userSchema
   .pre('validate', function(next){
+    console.log('Verifying password confirmation')
     if (this.isModified('password') && this.password !== this._passwordConfirmation) {
       this.invalidate('passwordConfirmation', 'Passwords don\'t match! 🚫')
     }
@@ -26,10 +37,13 @@ userSchema
   })
 
 // PRE SAVE
+// Create a hash password by passing in our password field and a salt
 userSchema
   .pre('save', function(next){
+    console.log('Hashing password')
     if (this.isModified('password')) {
       this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync())
+      console.log('Password hashed')
     }
     next()
   })

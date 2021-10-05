@@ -1,10 +1,27 @@
 import React from 'react'
 import defaultProfile from '../../images/default-profile.jpg'
+import { useHistory } from 'react-router-dom'
+import axios from 'axios'
 
-const Register = ({ handleChange, handleSubmit, handleImageUrl, imageUrl }) => {
+const Register = ({ handleChange, handleImageUrl, imageUrl, formData }) => {
+
+  const history = useHistory()
+
+  // Handle form submissions
+  const handleRegister = async (event) => {
+    event.preventDefault()
+    try {
+      const { data } = await axios.post('/api/register', formData)
+      console.log(data)
+      history.push('/')
+    } catch (err) {
+      console.log('Unable to handle form', err)
+    }
+  }
+
   return (
     <div className='container d-flex flex-column align-items-center justify-content-center'>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleRegister}>
       <h2 className="mb-3">Register</h2>
       {/* Username */}
       <div className="mb-3">
@@ -26,12 +43,13 @@ const Register = ({ handleChange, handleSubmit, handleImageUrl, imageUrl }) => {
         <div className='form-control d-flex flex-column align-items-center justify-content-center'>
           <input type="file" name="profilePicture" id="profilePicture" className="form-control-file" onChange={handleImageUrl}></input>
           <label htmlFor="profilePicture">
-          <div className="profile-image rounded-circle mb-4 mt-2">
-            {imageUrl ? <img src={imageUrl} alt="User profile" className="rounded-circle w-100 h-100 img-thumbnail" />
-            :
-            <img src={defaultProfile} alt="User profile" className="rounded-circle w-100 h-100 img-thumbnail" />}
-          </div>
-          Upload a Picture
+            <div className="profile-image rounded-circle mb-4 mt-2">
+              {/* If image uploaded, display it on the screen. Could break this out into function for post form */}
+              {imageUrl ? <img src={imageUrl} alt="User profile" className="rounded-circle w-100 h-100 img-thumbnail" />
+              :
+              <img src={defaultProfile} alt="User profile" className="rounded-circle w-100 h-100 img-thumbnail" />}
+            </div>
+            Upload a Picture
           </label>
         </div>
       </div>
