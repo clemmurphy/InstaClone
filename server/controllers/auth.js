@@ -5,7 +5,6 @@ import jwt from 'jsonwebtoken'
 
 // Get all users
 export const getAllUsers = async (_req, res) => {
-
   try {
     const users = await User.find()
     console.log(users)
@@ -35,12 +34,13 @@ export const getSingleUser = async (req, res) => {
 // Create a new user using request data
 export const createNewUser = async (req, res) => {
   try {
+    console.log(req.body)
     const userToCreate = await User.create(req.body)
-    console.log(userToCreate)
+    console.log('User created')
     return res.status(202).json({ message: `🎶 New user created! Welcome ${userToCreate.username}` })
   } catch (err) {
-    console.log('🚫 Error creating new user')
-    return res.status(422).json('Error')
+    console.log('🚫 Error creating new user', err)
+    return res.status(422).json('Unable to create new user')
   }
 }
 
