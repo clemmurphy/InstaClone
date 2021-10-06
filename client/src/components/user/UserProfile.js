@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 
 
 const UserProfile = ({ loggedIn }) => {
@@ -12,11 +12,11 @@ const UserProfile = ({ loggedIn }) => {
   const [ userDetails, setUserDetails ] = useState(null)
   let currentUserId = window.localStorage.currentUserId
   const [ userPosts, setUserPosts ] = useState([])
+  const [ followError, setFollowError ] = useState('')
 
   const getUserDetails = async () => {
     try {
       const { data } = await axios.get(`/api/u/${username}`)
-      console.log(userDetails)
       setUserDetails(data[0])
     } catch (err) {
       console.log(err)
@@ -33,7 +33,7 @@ const UserProfile = ({ loggedIn }) => {
       console.log(`Successfully followed ${userDetails.username}`)
       getUserDetails()
     } catch (err) {
-      console.log(err)
+      console.log(err.request.response)
       console.log('🚫 Couldn\'t follow user')
     }
   }
@@ -56,7 +56,6 @@ const UserProfile = ({ loggedIn }) => {
     try {
       const userToFetchPosts = userDetails._id
       const { data } = await axios.get(`/api/p/by/${userToFetchPosts}`)
-      console.log(data)
       setUserPosts(data.posts)
     } catch (err) {
       console.log(err)
@@ -82,49 +81,66 @@ const UserProfile = ({ loggedIn }) => {
   }, [userDetails])
 
   return (
-    <div className="user-profile-wrapper d-flex flex-column align-items-center mt-3">
+    <div className="user-profile-wrapper d-flex flex-column align-items-center mt-3 justify-content-center">
       { userDetails ? 
       <>
         <div className="user d-flex align-items-center flex-column mb-4">
-          <div className="d-flex align-items-center">
-            <div className="d-flex flex-column mt-2">
+          <div className="d-flex justify-content-between w-100 mt-2">
+            <div className="d-flex flex-column">
               <div className="profile-image rounded-circle">
                 <img src={userDetails.profilePicture} alt={userDetails.username} className="rounded-circle img-fluid w-100 h-100" />
               </div>
             </div>
             <div className="user-stats d-flex flex-row ms-2 align-items-center">
-              <div className="followers user-stat d-flex flex-column align-items-center ms-2">
+              <div className="followers user-stat d-flex flex-column align-items-center">
                 <p><strong>{userDetails.followers.length}</strong></p>
                 <p className="user-stat-text">Followers</p>
               </div>
-              <div className="following user-stat d-flex flex-column align-items-center ms-2">
+              <div className="following user-stat d-flex flex-column align-items-center">
                 <p><strong>{userDetails.following.length}</strong></p>
                 <p className="user-stat-text">Following</p>
               </div>
-              <div className="posts user-stat d-flex flex-column align-items-center ms-2">
+              <div className="posts user-stat d-flex flex-column align-items-center">
                 <p><strong>{userPosts.length}</strong></p>
                 <p className="user-stat-text">Posts</p>
               </div>
             </div>
           </div>
-          <h2 className="profile-username mt-2">{userDetails.username}</h2>
-          <div className="follow-button">
-            {displayFollowButtons()}
+          <div className="user-controls mt-2">
+            <h2 className="profile-username">{userDetails.username}</h2>
+            <div className="follow-button">
+              {displayFollowButtons()}
+            </div>
           </div>
         </div>
-        <div className="user-posts d-flex flex-wrap">
-          { userPosts.length > 0 ? 
-            userPosts.map(post => {
-              return ( 
-                <div key={post._id} className="post-thumbnail">
-                  <img src={post.contentUrl} alt={post.caption} />
-                </div>
-              )
-            })
+        { userPosts ? 
+          <div className="user-posts d-flex flex-wrap">
+            { userPosts.length > 0 ? 
+              userPosts.map(post => {
+                return (
+                  <div key={post._id} className="post-thumbnail">
+                    <Link to={`/p/${post._id}`}>
+                    <div className="post-thumbnail-stats">
+                      <p>❤ <span>{post.likes.length}</span></p>
+                    </div>
+                    <img src={post.contentUrl} alt={post.caption} />
+                    </Link>
+                  </div>
+                )
+              })
+            : userPosts.length === 0 ?
+              <div className="d-flex justify-content-center w-100"><p>No posts to display!</p></div>
+              :
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+          }
+          </div>
           :
-            <div className="d-flex justify-content-center w-100"><p>No posts to display!</p></div>
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
         }
-        </div>
       </>
       :
       <div className="warning">No user found!</div>

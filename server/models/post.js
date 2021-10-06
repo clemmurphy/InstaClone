@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+// import User from './user.js'
 
 const postSchema = new mongoose.Schema({
   contentUrl: { type: String, required: true },
@@ -7,8 +8,12 @@ const postSchema = new mongoose.Schema({
   comments: [ { type: mongoose.Schema.ObjectId, ref: 'Comment' } ],
   likes: [ { type: mongoose.Schema.ObjectId, ref: 'User' } ]
 },
-{ timestamps: true })
+{ timestamps: true, toJSON: { virtuals: true } })
 
-// Populate users and comments into individual post?
+// Always populate owner when you find all posts
+postSchema.pre('find', function() {
+  this.populate('owner')
+  
+})
 
 export default mongoose.model('Post', postSchema)

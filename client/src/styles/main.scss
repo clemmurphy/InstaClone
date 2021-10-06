@@ -1,8 +1,8 @@
-$post-width: 30%;
+$post-width: 33%;
 
 .profile-image {
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
   overflow: hidden;
   cursor: pointer;
 }
@@ -11,46 +11,69 @@ $post-width: 30%;
   display: none;
 }
 
-.user-profile-wrapper {
-  width: 100%;
-}
-
-.user-posts {
+.user {
   width: 80%;
-  height: auto;
-  align-items: space-between;
-  text-align: center;
+  max-width: 1000px;
 }
 
-.user-stat p {
-  height: 30px;
-  margin-bottom: 0;
-}
-
-.user-stat-text {
-  font-size: 14px;
-}
-
-.profile-username {
-  align-self: flex-start;
+.user-profile-wrapper {
+  width: 100vw;
+  padding-top: 65px;
+  .user-stat {
+    margin-left: 10px;
+    .user-stat-text {
+      font-size: 14px;
+    }
+    p {
+      height: 30px;
+      margin-bottom: 0;
+    }
+  }
+  .user-posts {
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    align-items: space-between;
+    justify-content: space-between;
+    text-align: center;
+    .post-thumbnail {
+      width: $post-width;
+      height: calc($post-width)
+    }
+    
+    .post-thumbnail img {
+      width: 100%;
+      height: 100%;
+      margin-bottom: calc(100vw * 0.01);
+    }
+  }
+  .profile-username {
+    align-self: flex-start;
+    margin: 0;
+  }
+  .user-controls {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .follow-button {
   align-self: flex-start;
 }
 
-.post-thumbnail {
-  width: $post-width;
-  height: calc($post-width)
-}
-
-.post-thumbnail img {
-  width: 100%;
-  height: 100%;
-}
-
-.navbar a {
-  text-decoration: none;
+.navbar{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  position: fixed;
+  top: 0;
+  margin: 0 auto;
+  width: 100vw;
+  z-index: 20;
+  padding: 20px 10px 10px 10px;
+    a {
+    text-decoration: none;
+  }
 }
 
 .login-form {
@@ -72,5 +95,96 @@ $post-width: 30%;
 }
 
 .timeline-wrapper {
+  padding-top: 20px;
   width: 100vw;
+  background-color: #EEE;
+}
+
+.post-thumbnail {
+  position: relative;
+}
+
+.post-thumbnail:hover .post-thumbnail-stats {
+  display: flex;
+}
+
+.post-thumbnail-stats {
+  height: 100%;
+  width: 100%;
+  display: none;
+  position: absolute;
+  top:0;
+  left: 0;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.2);
+  p {
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+  }
+}
+
+.post-wrapper {
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 0;
+  border-radius: 5;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  .post-likes-text {
+    font-weight: bold;
+  }
+  .post-image-container {
+    img {
+      height: 100%;
+    }
+  }
+  .post-content-wrapper {
+    padding-bottom: 0px;
+    .post-date {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    p {
+      margin-top: 10px;
+    }
+  }
+}
+  .post-user {
+    margin: 0;
+    padding: 10 0;
+    .post-username {
+      font-weight: bold;
+      text-decoration: none;
+      color: black;
+      height: 60px;
+      p {
+        margin-bottom: 0;
+        margin-left: 10px;
+      }
+    }
+  }
+  .inline-username {
+    font-weight: bold;
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+}
+
+
+
+
+@media (min-width:600px) {
+  .user-stats {
+    font-size: 20px;
+    .user-stat-text {
+      font-size: 20px;
+      margin-top: 0;
+    }
+    .user-stat {
+      margin-left: 40px;
+    }
+  }
 }

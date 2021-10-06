@@ -42,7 +42,7 @@ const Register = ({ handleChange, handleImageUrl, imageUrl, formData }) => {
       <div className="mb-3">
         <div className='form-control d-flex flex-column align-items-center'>
           <input type="file" name="profilePicture" id="profilePicture" className="form-control-file" onChange={handleImageUrl}></input>
-          <label htmlFor="profilePicture d-flex flex-column align-items-center justify-content-center">
+          <label htmlFor="profilePicture">
             <div className="registration-image rounded-circle mb-4 mt-2">
               {/* If image uploaded, display it on the screen. Could break this out into function for post form */}
               {imageUrl ? <img src={imageUrl} alt="User profile" className="rounded-circle w-100 h-100 img-thumbnail" />
