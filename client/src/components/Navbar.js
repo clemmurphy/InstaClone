@@ -35,6 +35,7 @@ function Navbar({ loggedIn, setLoggedIn }) {
           <ul className='navbar-nav flex-row align-items-center'>
           { loggedIn ?
             <>
+              <li className='nav-item ms-3'><Link to={`/t`}><i class="fas fa-book-open"></i></Link></li>
               <li className='nav-item ms-3'><Link to={`/u/${username}`}><i className="fas fa-user"></i></Link></li>
               <li className='nav-item ms-3'><button onClick={logOut} className="btn btn-primary"><i className="fas fa-sign-out-alt"></i></button></li>
             </>
