@@ -11,14 +11,15 @@ $post-width: 33%;
   display: none;
 }
 
-.user {
-  width: 80%;
-  max-width: 1000px;
-}
+// USER PROFILE
 
 .user-profile-wrapper {
   width: 100vw;
   padding-top: 65px;
+  .user {
+    width: 80%;
+    max-width: 1000px;
+  }
   .user-stat {
     margin-left: 10px;
     .user-stat-text {
@@ -40,7 +41,29 @@ $post-width: 33%;
       width: $post-width;
       height: calc($post-width)
     }
-    
+    .post-thumbnail {
+      position: relative;
+    }
+    .post-thumbnail:hover .post-thumbnail-stats {
+      display: flex;
+    }
+    .post-thumbnail-stats {
+      height: 100%;
+      width: 100%;
+      display: none;
+      position: absolute;
+      top:0;
+      left: 0;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0,0,0,0.2);
+      p {
+        font-size: 30px;
+        color: white;
+        font-weight: bold;
+      }
+    }
     .post-thumbnail img {
       width: 100%;
       height: 100%;
@@ -59,10 +82,6 @@ $post-width: 33%;
   }
 }
 
-.follow-button {
-  align-self: flex-start;
-}
-
 .navbar{
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   position: fixed;
@@ -78,16 +97,15 @@ $post-width: 33%;
 
 .login-form {
   height: 100vh;
-  padding-top: 40px;
+  padding-top: 120px;
+  form {
+    width: 60%;
+  }
+  .login-button {
+    width: 100%;
+  }
 }
 
-.login-form form {
-  width: 60%;
-}
-
-.login-button {
-  width: 100%;
-}
 
 .registration-image {
   height: 200px;
@@ -103,35 +121,9 @@ $post-width: 33%;
 }
 
 .timeline-wrapper {
-  padding-top: 20px;
+  padding-top: 80px;
   width: 100vw;
   background-color: #EEE;
-}
-
-.post-thumbnail {
-  position: relative;
-}
-
-.post-thumbnail:hover .post-thumbnail-stats {
-  display: flex;
-}
-
-.post-thumbnail-stats {
-  height: 100%;
-  width: 100%;
-  display: none;
-  position: absolute;
-  top:0;
-  left: 0;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0,0,0,0.2);
-  p {
-    font-size: 30px;
-    color: white;
-    font-weight: bold;
-  }
 }
 
 .post-wrapper {
@@ -185,6 +177,10 @@ $post-width: 33%;
 
 
 @media (min-width:600px) {
+  .profile-image {
+    height: 150px;
+    width: 150px;
+  }
   .user-stats {
     font-size: 20px;
     .user-stat-text {
@@ -193,6 +189,17 @@ $post-width: 33%;
     }
     .user-stat {
       margin-left: 40px;
+    }
+  }
+  .post-wrapper {
+    height: 800px;
+    width: 500px;
+    .post-image-container {
+      height: 500px;
+      img {
+        height: 100%;
+        width: 100%;
+      }
     }
   }
 }

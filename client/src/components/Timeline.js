@@ -16,7 +16,7 @@ function Timeline() {
   },[])
 
   return (
-    <div className="timeline-wrapper d-flex flex-column align-items-center mt-5">
+    <div className="timeline-wrapper d-flex flex-column align-items-center">
       {timeLine.map(tl => {
         const postDate = new Date(tl.createdAt)
         return(
