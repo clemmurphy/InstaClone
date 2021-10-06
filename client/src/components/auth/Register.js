@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import defaultProfile from '../../images/default-profile.jpg'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
+import ErrorMessage from './ErrorMessage'
 
 const Register = ({ handleChange, handleImageUrl, imageUrl, formData }) => {
 
   const history = useHistory()
+  const [ registerError, setRegisterError ] = useState('')
 
   // Handle form submissions
   const handleRegister = async (event) => {
@@ -15,9 +17,15 @@ const Register = ({ handleChange, handleImageUrl, imageUrl, formData }) => {
       console.log(data)
       history.push('/login')
     } catch (err) {
-      console.log('Unable to handle form', err)
+      console.log('Unable to register')
+      const errorMessage = err.request.response.replace(/['"]+/g, '')
+      setRegisterError(errorMessage)
     }
   }
+
+  useEffect(() => {
+    setRegisterError('')
+  },[])
 
   return (
     <div className='login-form container d-flex flex-column align-items-center'>
@@ -54,6 +62,7 @@ const Register = ({ handleChange, handleImageUrl, imageUrl, formData }) => {
         </div>
       </div>
       <button className='btn btn-success btn-block register-button'><i class="fas fa-pencil-alt"></i> Register</button>
+      { registerError && <ErrorMessage title='Error registering' content={registerError} /> }
     </form>
   </div>
   )
