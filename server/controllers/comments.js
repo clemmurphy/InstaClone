@@ -5,7 +5,6 @@ import Post from '../models/post.js'
 export const getAllComments = async (_req, res) => {
   try {
     const comments = await Comment.find()
-    console.log('All comment:', comments)
     return res.status(200).json(comments)
   } catch (err) {
     console.log('something went wrong could\'nt get comment ')

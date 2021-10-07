@@ -25,25 +25,26 @@ function Navbar({ loggedIn, setLoggedIn }) {
     } else {
       setLoggedIn(false)
     }
-  }, [loggedIn])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <header>
-      <nav className='navbar navbar-light bg-light'>
+      <nav className='navbar'>
         <div className='container'>
-          <div className='navbar-brand'> <Link to='/'><i className="fas fa-camera-retro"></i> InstaClone</Link></div>
+          <div className='navbar-brand'> <Link to={ loggedIn ? '/t' : '/' }><i className="fas fa-camera-retro nav-icon"></i> InstaClone</Link></div>
           <ul className='navbar-nav flex-row align-items-center'>
           { loggedIn ?
             <>
-              <li className='nav-item ms-3'><Link to={'/t'}><i className="fas fa-images"></i></Link></li>
-              <li className='nav-item ms-3'><Link to={`/u/${username}`}><i className="fas fa-user"></i></Link></li>
-              <li className='nav-item ms-3'><button onClick={logOut} className="logout-button"><i className="fas fa-sign-out-alt"></i></button></li>
-              <li className='nav-item ms-3'><Link to={'/add-post'}><i className="fas fa-plus-square"></i></Link></li>
+              <li className='nav-item'><Link to={'/t'} data-toggle="tooltip" data-placement="bottom" title="Timeline"><i className="fas fa-images"></i></Link></li>
+              <li className='nav-item'><button onClick={logOut} className="logout-button" data-toggle="tooltip" data-placement="bottom" title="Sign out"><i className="fas fa-sign-out-alt"></i></button></li>
+              <li className='nav-item'><Link to={`/u/${username}`} data-toggle="tooltip" data-placement="bottom" title="My profile"><i className="fas fa-user"></i></Link></li>
+              <li className='nav-item'><Link to={'/add-post'} data-toggle="tooltip" data-placement="bottom" title="New post"><i className="fas fa-plus-square"></i></Link></li>
             </>
             :
             <>
-              <li className='nav-item ms-3'><Link to='/login'><i className="fas fa-sign-in-alt"></i> Log In</Link></li>
-              <li className='nav-item ms-3'><Link to='/register'><i className="fas fa-pencil-alt"></i> Register</Link></li>
+              <li className='nav-item'><Link to='/login' data-toggle="tooltip" data-placement="bottom" title="Log In"><i className="fas fa-sign-in-alt"></i></Link></li>
+              <li className='nav-item'><Link to='/register' data-toggle="tooltip" data-placement="bottom" title="Register"><i className="fas fa-user-plus"></i></Link></li>
             </> }
           </ul>
         </div>

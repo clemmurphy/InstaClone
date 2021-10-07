@@ -15,10 +15,6 @@ function AddPost() {
     setPostData(newPostData)
   }
 
-  React.useEffect(() => {
-    console.log(postData)
-  },[postData])
-
   const handleImageUrl = async (e) => {
     console.log('Image handler firing')
     const dataToSend = new FormData()

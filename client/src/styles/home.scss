@@ -1,0 +1,56 @@
+// HOME PAGE
+.home-page {
+  padding-top: 80px;
+  min-height: calc(100vh - $footer-height);
+  display: flex;
+  align-items: center;
+  background-color: $bg-color;
+  color: $brand-text;
+  .homepage-content-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    .homepage-content {
+      height: 100%;
+      margin: 10px;
+      width: 300px;
+      text-align: center;
+      img {
+        width: auto;
+      }
+    }
+  }
+  h1 {
+    font-family: 'Sacramento', cursive;
+    margin-top: 20px;
+    font-size: 60px;
+  }
+  .home-image{
+    height: 400px;
+    background-size: cover;
+    width: 100%;
+  }
+  .hp-login {
+    background: $brand-yellow;
+    a {
+      color: $bg-color;
+    }
+  }
+  .hp-register {
+    margin-left: 10px;
+    background: $brand-orange;
+    a {
+      color: $brand-text;
+    }
+  }
+  .btn {
+    border-radius: 30px;
+    a {
+      background: none;
+      text-decoration: none;
+    }
+  }
+}

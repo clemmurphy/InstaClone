@@ -1,0 +1,191 @@
+.post-wrapper {
+  padding: 0;
+  border-radius: 5;
+  background-color: $bg-color;
+  color: $brand-text;
+  .post-likes-text {
+    font-weight: bold;
+  }
+  .post-image-container {
+    img {
+      height: 100%;
+    }
+  }
+  .post-content-wrapper {
+    padding-bottom: 0px;
+    .post-date {
+    font-size: 0.6rem;
+    text-decoration: none;
+    color: $brand-text;
+    p {
+      margin-top: 10px;
+    }
+  }
+  .first-comment {
+    font-size: 14px;
+    margin-top: 5px;
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+    .comment-dots {
+      position: absolute;
+      top: 20%;
+      right: 0;
+      font-size: 10px;
+      opacity: 0.3;
+    }
+    a {
+      text-decoration: none;
+      color: $brand-text;
+      font-weight: bold;
+      font-size: 14px;
+    }
+  }
+  .comment-feed {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .comment-wrapper {
+      width: 100%;
+      font-size: 14px;
+      margin-top: 5px;
+      a {
+        text-decoration: none;
+        color: $brand-text;
+        font-weight: bold;
+        font-size: 14px;
+      }
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+}
+  .post-user {
+    margin: 0;
+    padding: 10 0;
+    .post-profile-picture {
+      height: 100%;
+      width: auto;
+      border-radius: 50%;
+    }
+    .profile-picture-border {
+      border: 10px solid;
+      border-image-slice: 1;
+      border-width: 3px;
+      background: rgb(255,199,38);
+      border-image: round;
+      border-image-source: linear-gradient(45deg, rgba(255,199,38,1) 10%, rgba(255,97,36,1) 87%);
+      border-radius: 50%;
+    }
+    .post-username {
+      font-weight: bold;
+      text-decoration: none;
+      color: $brand-text;
+      font-size: 18px;
+      height: 60px;
+      p {
+        margin-bottom: 0;
+        margin-left: 10px;
+      }
+    }
+  }
+  .inline-username {
+    font-weight: bold;
+    a {
+      text-decoration: none;
+      color: $brand-text;
+      margin-right: 2px;
+    }
+  }
+}
+
+.post-caption {
+  font-size: 14px;
+}
+
+// POST CONTROLS
+
+.post-controls {
+  color: $brand-text;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  .like-button {
+    font-size: 30px;
+    color: $brand-text;
+  }
+  .liked-heart {
+    color:red;
+  }
+  // COMMENT FORM
+  .comment-form {
+    height: 100%;
+    position: relative;
+    flex-grow: 1;
+    margin-left: 10px;
+    input {
+      border: 1px solid rgba(0,0,0,0.2);
+      height: 40px;
+      font-size: 12px;
+      border-radius: 20px;
+      padding-left: 20px;
+    }
+    .comment-button {
+      position: absolute;
+      right: 0;
+      height: 40px;
+      padding: 0;
+      background: none;
+      border: none;
+      color: #999;
+      padding-right: 15px;
+    }
+  }
+}
+
+// SINGLE POST PAGE
+
+.single-post-wrapper {
+  height: calc(100vh - $footer-height);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: $bg-color;
+  .post-wrapper {
+    margin-top: 80px;
+    border: none;
+    .card-header {
+      display: none;
+    }
+  }
+}
+
+// ADD POST
+.add-post-container {
+  margin-top: 90px;
+  height: 100vh;
+  max-width: 600px;
+  .card {
+    margin-top: 20px;
+  }
+  .new-post-upload {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+  }
+  .comment-form {
+    width: 100%;
+    margin-top: 10px;
+    button {
+      margin-top: 10px;
+      border-radius: 20px;
+    }
+  }
+}
+
+.form-control-file {
+  display: none;
+}

@@ -33,23 +33,49 @@ const Register = ({ handleChange, handleImageUrl, imageUrl, formData }) => {
       <h2 className="mb-3">Register</h2>
       {/* Username */}
       <div className="mb-3">
-        <input type="text" className="form-control" name="username" placeholder="Username" onInput={handleChange} />
+        <input type="text"
+          className="form-control"
+          name="username"
+          placeholder="Username"
+          onInput={handleChange}
+          autoComplete="username"
+          autoFocus={true} />
       </div>
       {/* Email */}
       <div className="mb-3">
-        <input type="email" className="form-control" name="email" placeholder="Email" onInput={handleChange} />
+        <input type="email"
+          className="form-control"
+          name="email"
+          placeholder="Email"
+          onInput={handleChange}
+          autoComplete="email" />
       </div>
       {/* Password */}
       <div className="mb-3">
-        <input type="password" className="form-control" name="password" placeholder="Password" onInput={handleChange} />
+        <input type="password"
+          className="form-control"
+          name="password"
+          placeholder="Password"
+          onInput={handleChange}
+          autoComplete="new-password" />
       </div>
       <div className="mb-3">
-        <input type="password" className="form-control" name="passwordConfirmation" placeholder="Confirm Password" onInput={handleChange} />
+        <input type="password"
+          className="form-control"
+          name="passwordConfirmation"
+          placeholder="Confirm Password"
+          onInput={handleChange}
+          autoComplete="new-password" />
       </div>
       {/* Profile Picture Upload */}
       <div className="mb-3">
         <div className='form-control d-flex flex-column align-items-center'>
-          <input type="file" name="profilePicture" id="profilePicture" className="form-control-file" onChange={handleImageUrl}></input>
+          <input type="file"
+            name="profilePicture"
+            id="profilePicture"
+            className="form-control-file"
+            onChange={handleImageUrl}>
+          </input>
           <label htmlFor="profilePicture">
             <div className="registration-image rounded-circle mb-4 mt-2">
               {/* If image uploaded, display it on the screen. Could break this out into function for post form */}
@@ -61,7 +87,7 @@ const Register = ({ handleChange, handleImageUrl, imageUrl, formData }) => {
           <div>Upload a Picture</div>
         </div>
       </div>
-      <button className='btn btn-success btn-block register-button'><i class="fas fa-pencil-alt"></i> Register</button>
+      <button className='btn btn-success btn-block register-button'><i className="fas fa-pencil-alt"></i> Register</button>
       { registerError && <ErrorMessage title='Error registering' content={registerError} /> }
     </form>
   </div>

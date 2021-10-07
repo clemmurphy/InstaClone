@@ -1,0 +1,42 @@
+// LOGIN FORM
+
+.login-form {
+  height: 100vh;
+  padding-top: 120px;
+  form {
+    width: 60%;
+  }
+  .login-button {
+    width: 100%;
+    border-color: $brand-yellow;
+    background-color: $brand-yellow;
+    color: $bg-color;
+    border-radius: 20px;
+  }
+}
+
+// REGISTER FORM
+
+.registration-image {
+  height: 200px;
+  width: 200px;
+}
+
+.profile-picture label {
+  text-align: center;
+}
+
+.register-button {
+  width: 100%;
+  border-color: $brand-orange;
+  background-color: $brand-orange;
+  color: $brand-text;
+  border-radius: 20px;
+}
+
+.profile-image {
+  height: 80px;
+  width: 80px;
+  overflow: hidden;
+  cursor: pointer;
+}

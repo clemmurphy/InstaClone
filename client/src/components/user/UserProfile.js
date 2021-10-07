@@ -50,6 +50,7 @@ const UserProfile = ({ loggedIn }) => {
     } catch (err) {
       console.log(err)
       setFollowError(err.request.response)
+      console.log(followError)
       console.log('🚫 Couldn\'t unfollow user')
     }
   }
@@ -66,9 +67,9 @@ const UserProfile = ({ loggedIn }) => {
 
   const displayFollowButtons = () => {
     if (userDetails.followers.includes(currentUserId) && loggedIn === true) {
-      return (<button className="btn btn-danger btn-sm" onClick={unfollowUser}>Unfollow</button>)
+      return (<button className="btn unfollow-button" onClick={unfollowUser}>Unfollow</button>)
     } else if (loggedIn === true) {
-      return (<button className="btn btn-outline-success btn-sm" onClick={followUser}>Follow</button>)
+      return (<button className="btn follow-button" onClick={followUser}>Follow</button>)
     } else {
       return (<p>You must log in to follow!</p>)
     }
@@ -76,21 +77,23 @@ const UserProfile = ({ loggedIn }) => {
 
   useEffect(() => {
     getUserDetails()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
     getUserPosts()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userDetails])
 
   return (
-    <div className="user-profile-wrapper d-flex flex-column align-items-center mt-3 justify-content-center">
+    <div className="user-profile-wrapper d-flex flex-column align-items-center">
       { userDetails ? 
       <>
         <div className="user d-flex align-items-center flex-column mb-4">
           <div className="d-flex justify-content-between w-100 mt-2">
             <div className="d-flex flex-column">
               <div className="profile-image rounded-circle">
-                <img src={userDetails.profilePicture} alt={userDetails.username} className="rounded-circle img-fluid w-100 h-100" />
+                <img src={userDetails.profilePicture} alt={userDetails.username} className="rounded-circle img-fluid w-100 h-100 profile-picture-border" />
               </div>
             </div>
             <div className="user-stats d-flex flex-row ms-2 align-items-center">
@@ -132,7 +135,7 @@ const UserProfile = ({ loggedIn }) => {
                 )
               })
             : userPosts.length === 0 ?
-              <div className="d-flex justify-content-center w-100"><p>No posts to display!</p></div>
+              <div className="d-flex justify-content-center w-100 placeholder-content"><p>No posts to display!</p></div>
               :
               <div class="spinner-border" role="status">
                 <span class="sr-only">Loading...</span>

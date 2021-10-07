@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 import Home from './components/Home'
 import Navbar from './components/Navbar'
@@ -47,11 +47,6 @@ function App() {
       console.log(err)
     }
   }
-
-  // Track form data for dev purposes
-  useEffect(() => {
-    console.log(formData)
-  }, [formData])
 
   return (
     <BrowserRouter>

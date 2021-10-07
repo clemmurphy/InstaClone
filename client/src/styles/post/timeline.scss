@@ -1,0 +1,41 @@
+// TIMELINE
+
+.timeline-wrapper {
+  padding-top: 80px;
+  width: 100%;
+  min-height: calc(100vh - $footer-height);
+  background-color: $bg-color;
+  .no-posts-to-display {
+    padding-top: 20px;
+    color:$brand-text;
+  }
+  .timeline-controls {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    text-align: center;
+    color:#444;
+    margin-bottom: 10px;
+    .timeline-button {
+      flex-grow: 1;
+      border-top: 1px solid rgba(0, 0, 0, 0.2);
+      padding: 10px 0;
+      transition: 0.3s;
+      &:hover {
+        border-top: 2px solid #444;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+    }
+    .active {
+      color: $brand-text;
+      border-top: 2px solid $brand-text;
+      transition: 0.3s;
+    }
+  }
+  .post-wrapper {
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 8px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+}

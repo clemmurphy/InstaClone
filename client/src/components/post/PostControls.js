@@ -12,6 +12,7 @@ const PostControls = ({ post, id }) => {
   const [ postComments, setPostComments ] = useState(post.comments)
   const [ commentsOpen, setCommentsOpen ] = useState(false)
 
+  // Liking a post
   const likePost = async () => {
     if (!window.localStorage.currentUserId) throw new Error('You need to log in to like that post!')
     try {
@@ -25,6 +26,7 @@ const PostControls = ({ post, id }) => {
     }
   }
 
+  // Unliking a post
   const unlikePost = async () => {
     try {
       const token = window.localStorage.token
@@ -37,6 +39,7 @@ const PostControls = ({ post, id }) => {
     }
   }
 
+  // Check like status for a post to display correct UI
   useEffect(() => {
     const getLikeStatus = () => {
       const currentUserId = window.localStorage.currentUserId
@@ -49,11 +52,17 @@ const PostControls = ({ post, id }) => {
     getLikeStatus()
   }, [post])
 
+  // Get and sort comments and like status
   useEffect(() => {
     async function setData() {
       const { data } = await axios.get(`/api/p/${post._id}`)
       setPostLikes(data.likes.length)
-      setPostComments(data.comments)
+      const sortedComments = data.comments.sort((a, b) => {
+        const aDate = new Date(a.createdAt)
+        const bDate = new Date(b.createdAt)
+        return bDate - aDate
+      })
+      setPostComments(sortedComments)
     }
     setData()
   }, [likedByUser, newCommentAdded, post._id])
@@ -70,21 +79,33 @@ const PostControls = ({ post, id }) => {
             <div className="like-button">
               { likedByUser ? <i className="fas fa-heart liked-heart" onClick={unlikePost}></i> : <i className="far fa-heart unliked-heart" onClick={likePost}></i>}
             </div>
-            <CommentForm id={id} newCommentAdded={newCommentAdded} setNewCommentAdded={setNewCommentAdded} />
+            <CommentForm
+              id={id}
+              newCommentAdded={newCommentAdded}
+              setNewCommentAdded={setNewCommentAdded}
+            />
             </div>
             <div className="first-comment" onClick={() => {setCommentsOpen(!commentsOpen)}} aria-controls="comment-feed" aria-expanded={commentsOpen}>
               { postComments.length > 0 && <div className="comment-wrapper">
-                <Link to={`/u/${postComments[0].owner.username}`}>{postComments[0].owner.username}</Link><span> {postComments[0].content}</span><i className="fas fa-ellipsis-h comment-dots"></i>
+                <Link to={`/u/${postComments[0].owner.username}`}>
+                  {postComments[0].owner.username}
+                </Link>
+                <span> {postComments[0].content}</span>
+                <p className="comment-dots">See all comments</p>
               </div> }
             </div>
             <div className="comment-feed" id="comment-feed">
               { postComments.length > 0 && postComments.map((comment, index) => {
                 if (index) return (
-                  <Collapse in={commentsOpen}>
-                    <div className="comment-wrapper" key={comment._id}>
-                      <Link to={`/u/${comment.owner.username}`}>{comment.owner.username}</Link><span> {comment.content}</span>
+                  <Collapse in={commentsOpen} key={comment._id}>
+                    <div className="comment-wrapper">
+                      <Link
+                        to={`/u/${comment.owner.username}`}>{comment.owner.username}
+                      </Link>
+                      <span> {comment.content}</span>
                     </div>
                   </Collapse>)
+                return null
               })}
             </div>
           </>

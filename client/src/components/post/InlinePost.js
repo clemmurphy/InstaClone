@@ -8,12 +8,12 @@ const InlinePost = ({ post }) => {
 
   return (
     <div key={post._id}>
-      <div className="card mb-4 post-wrapper">
+      <div className="card post-wrapper">
         <div className="card-header post-user">
         { post.owner && 
           <>
             <Link to={`/u/${post.owner.username}`} className="post-username d-flex align-items-center">
-              <img src={post.owner.profilePicture} alt={post.owner.username} className="img-thumbnail rounded-circle h-100" />
+              <img src={post.owner.profilePicture} alt={post.owner.username} className="post-profile-picture profile-picture-border rounded-circle" />
               <p>{post.owner.username}</p>
             </Link>
           </>

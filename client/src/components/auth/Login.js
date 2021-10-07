@@ -19,7 +19,6 @@ const Login = ({ handleChange, formData, setLoggedIn }) => {
   const handleLogin = async (event) => {
     event.preventDefault()
     try {
-      console.log(formData)
       const { data } = await axios.post('/api/login', formData)
       console.log(data.message)
       setTokenToLocalStorage(data.token, data.id, data.username)
@@ -41,10 +40,21 @@ const Login = ({ handleChange, formData, setLoggedIn }) => {
       <form onSubmit={handleLogin}>
         <h2 className="mb-3">Log In</h2>
         <div className="mb-3">
-          <input type="text" className="form-control" name="username" placeholder="Username" onInput={handleChange} />
+          <input type="text"
+            className="form-control"
+            name="username"
+            placeholder="Username"
+            onInput={handleChange}
+            autoComplete="off"
+            autoFocus={true} />
         </div>
         <div className="mb-3">
-          <input type="password" className="form-control" name="password" placeholder="Password" onInput={handleChange} />
+          <input type="password"
+            className="form-control"
+            name="password"
+            placeholder="Password"
+            onInput={handleChange}
+            autoComplete="off" />
         </div>
         <button className='btn btn-success login-button'>Log In</button>
         { loginError && <ErrorMessage title='Error logging in' content={loginError} /> }

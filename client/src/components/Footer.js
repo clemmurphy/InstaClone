@@ -2,8 +2,8 @@ import React from 'react'
 
 function Footer() {
   return (
-    <footer className="footer bg-light text-center">
-      <p>made with <span className="footer-heart">&hearts;</span> By Clem and Bader</p>
+    <footer className="footer text-center">
+      <p>made with <span className="footer-heart">&hearts;</span> By <a href="https://github.com/clemmurphy/">Clem</a> and <a href="https://github.com/BaderAotaibi">Bader</a></p>
     </footer>
   )
 }

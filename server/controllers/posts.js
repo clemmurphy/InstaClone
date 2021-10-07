@@ -1,10 +1,10 @@
 import Post from '../models/post.js'
+import User from '../models/user.js'
 
 // get all post 
 export const getAllPosts = async (_req, res) => {
   try {
     const posts = await Post.find()
-    console.log('All posts:', posts)
     return res.status(200).json(posts)
   } catch (err) {
     console.log('Error getting posts')
@@ -114,12 +114,48 @@ export const deletePost = async (req,res) => {
 export const getPostsByUser = async (req, res) => {
   try {
     const { id } = req.params
-    const userPosts = await Post.find({ owner: id })
+    const userPosts = await Post.find({ owner: id }).sort({ createdAt: 'desc' })
     console.log('Fetched user posts')
     if (!userPosts) throw new Error('User has no posts!')
     return res.status(200).json({ posts: userPosts })
   } catch (err) {
     console.log(err)
     res.status(404).json({ message: 'Couldn\'t get user posts' })
+  }
+}
+
+export const getPostsByChron = async (_req, res) => {
+  try {
+    const posts = await Post.find().sort({ createdAt: 'desc' })
+    return res.status(200).json(posts)
+  } catch (err) {
+    console.log('Error getting posts')
+  }
+}
+
+export const getPostsByFollowing = async (req, res) => {
+  try {
+    const { id } = req.params
+    const user = await User.findById(id)
+    const following = user.following
+    const followingPosts = await Post.find({ owner: { $in: following } }).sort({ createdAt: 'desc' })
+    console.log('Fetched posts by users you are following')
+    if (!followingPosts) throw new Error('You are not following anyone!')
+    return res.status(200).json({ posts: followingPosts })
+  } catch (err) {
+    console.log(err)
+    res.status(404).json({ message: 'Couldn\'t get user posts' })
+  }
+}
+
+export const getPostsByPopularity = async (_req, res) => {
+  try {
+    const posts = await Post.find().sort({ createdAt: 'desc' })
+    posts.sort((a, b) => {
+      return b.likes.length - a.likes.length
+    })
+    return res.status(200).json(posts)
+  } catch (err) {
+    console.log('Error getting posts')
   }
 }

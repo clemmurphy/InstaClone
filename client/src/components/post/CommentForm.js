@@ -1,11 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
-import { useHistory } from 'react-router-dom'
 
 function CommentForm({ id, newCommentAdded, setNewCommentAdded }) {
 
-  const [ comment, setComment ] = React.useState('')
-  const history = useHistory()
+  const [ comment, setComment ] = useState('')
 
   const handleChange = (event) => {
     const newComment = { [event.target.name]: event.target.value, owner: window.localStorage.currentUserId, parentPost: id }
@@ -20,7 +18,6 @@ function CommentForm({ id, newCommentAdded, setNewCommentAdded }) {
       await axios.post(`/api/p/${id}/comment`, comment, config)
       setNewCommentAdded(true)
       e.target.content.value = ''
-      history.pushState(`/p/${id}`)
     } catch (error) {
       console.log(error)
     }
@@ -28,7 +25,7 @@ function CommentForm({ id, newCommentAdded, setNewCommentAdded }) {
 
   return (
     <form className="comment-form d-flex justify-content-between" onSubmit={handleComment}>
-      <input className="form-control" placeholder="Add a comment..." name="content" onInput={handleChange}></input>
+      <input className="form-control" placeholder="Add a comment..." name="content" onInput={handleChange} autoComplete="off" ></input>
       <button className="comment-button btn btn-dark"><i className="far fa-comment"></i></button>
     </form>
   )

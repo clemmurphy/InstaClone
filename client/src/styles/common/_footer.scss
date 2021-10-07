@@ -1,0 +1,20 @@
+// FOOTER
+
+.footer {
+  height: $footer-height;
+  background-color: $bg-color;
+  color: $brand-text;
+  font-size: 12px;
+  // heart span in the footer
+  .footer-heart {
+    color: red;
+  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  a {
+    color: $brand-text;
+    text-decoration: none;
+  }
+}

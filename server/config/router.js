@@ -1,6 +1,6 @@
 import express from 'express'
 import { addComment, deleteComment, getAllComments } from '../controllers/comments.js'
-import { getAllPosts, addPost, updatePost, getSinglePostById, deletePost, likePost, unLikePost, getPostsByUser } from '../controllers/posts.js'
+import { getAllPosts, addPost, updatePost, getSinglePostById, deletePost, likePost, unLikePost, getPostsByUser, getPostsByChron, getPostsByFollowing, getPostsByPopularity } from '../controllers/posts.js'
 import { getAllUsers, createNewUser, getSingleUser, loginUser } from '../controllers/auth.js'
 import { secureRoute } from './secureRoute.js'
 import { followUser, unfollowUser } from '../controllers/follow.js'
@@ -12,6 +12,12 @@ router.route('/p')
   .get(getAllPosts)
   .post(secureRoute, addPost)
 
+router.route('/p/chron')
+  .get(getPostsByChron)
+
+router.route('/p/pop')
+  .get(getPostsByPopularity)
+
 router.route('/p/:id')
   .get(getSinglePostById)
   .put(secureRoute, updatePost)
@@ -22,6 +28,9 @@ router.route('/p/:id/comment')
 
 router.route('/p/by/:id')
   .get(getPostsByUser)
+
+router.route('/p/f/:id')
+  .get(secureRoute, getPostsByFollowing)
 
 // COMMENT ROUTES
 router.route('/c')
