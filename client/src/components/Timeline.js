@@ -33,11 +33,38 @@ function Timeline() {
     <>
       <div className="timeline-wrapper d-flex flex-column align-items-center">
         <div className="timeline-controls">
-          <div className={`chron timeline-button ${ active === 'chron' ? "active" : "" } `} onClick={getChronTimeline} data-toggle="tooltip" data-placement="bottom" title="Most recent posts"><i className="fas fa-stopwatch"></i></div>
-          { window.localStorage.token && <div className={`following timeline-button ${ active === 'following' ? "active" : "" } `} onClick={getFollowingTimeline} data-toggle="tooltip" data-placement="bottom" title="Posts from people you follow"><i className="fas fa-user-friends"></i></div> }
-          <div className={`popular timeline-button ${ active === 'popular' ? "active" : "" } `} onClick={getPopularTimeline} data-toggle="tooltip" data-placement="bottom" title="Hottest posts"><i className="fas fa-fire-alt"></i></div>
+          {/* Chron timeline */}
+          <div className={`chron timeline-button ${ active === 'chron' ? "active" : "" } `}
+            onClick={getChronTimeline}
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Most recent posts">
+            <i className="fas fa-stopwatch"></i>
+          </div>
+          {/* If logged in, show following timeline */}
+          { window.localStorage.token && 
+          <div className={`following timeline-button ${ active === 'following' ? "active" : "" } `}
+            onClick={getFollowingTimeline}
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Posts from people you follow">
+            <i className="fas fa-user-friends"></i>
+          </div> }
+          {/* Popular timeline */}
+          <div className={`popular timeline-button ${ active === 'popular' ? "active" : "" } `}
+            onClick={getPopularTimeline}
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Hottest posts">
+            <i className="fas fa-fire-alt"></i>
+          </div>
         </div>
-        { !timeLine.length ? <><h3 className="no-posts-to-display">No posts to display!</h3><p>You may need to follow some more users</p></> : timeLine.map(tl => {
+        {/* Populate timeline */}
+        { !timeLine.length ?
+        <>
+          <h3 className="no-posts-to-display">No posts to display!</h3>
+          <p>You may need to follow some more users</p>
+        </> : timeLine.map(tl => {
           return(
             <InlinePost post={tl} key={tl._id} />
           )
