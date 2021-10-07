@@ -22,7 +22,7 @@ $brand-text: #000;
 
 .user-profile-wrapper {
   width: 100vw;
-  padding-top: 65px;
+  padding-top: 100px;
   .user {
     width: 80%;
     max-width: 1000px;
@@ -36,6 +36,9 @@ $brand-text: #000;
       height: 30px;
       margin-bottom: 0;
     }
+  }
+  .profile-rule {
+    display: none;
   }
   .user-posts {
     width: 100%;
@@ -55,7 +58,7 @@ $brand-text: #000;
       display: flex;
     }
     .post-thumbnail-stats {
-      height: 100%;
+      height: calc(100% - (100vw * 0.01));
       width: 100%;
       display: none;
       position: absolute;
@@ -64,7 +67,7 @@ $brand-text: #000;
       text-align: center;
       justify-content: center;
       align-items: center;
-      background-color: rgba(0,0,0,0.2);
+      background-color: rgba(0, 0, 0, 0.4);
       p {
         font-size: 30px;
         color: white;
@@ -82,6 +85,7 @@ $brand-text: #000;
     margin: 0;
   }
   .user-controls {
+    margin-top: 10px;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -98,11 +102,17 @@ $brand-text: #000;
   margin: 0 auto;
   width: 100vw;
   z-index: 20;
-  padding: 20px 10px 10px 10px;
+  padding: 10px;
     a {
     text-decoration: none;
+    color: $brand-text;
   }
   color: $brand-text;
+  .logout-button {
+    border: none;
+    background: none;
+    color: $brand-text;
+  }
 }
 
 // LOGIN FORM
@@ -159,9 +169,9 @@ $brand-text: #000;
   .post-content-wrapper {
     padding-bottom: 0px;
     .post-date {
+    font-size: 0.6rem;
     text-decoration: none;
-    color: black;
-    font-weight: bold;
+    color: rgba(0,0,0,0.5);
     p {
       margin-top: 10px;
     }
@@ -190,9 +200,44 @@ $brand-text: #000;
   }
 }
 
+.post-caption {
+  font-size: 14px;
+}
+
+// POST CONTROLS
+
 .post-controls {
-  height: 80px;
   color: black;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  .like-button {
+    font-size: 30px;
+  }
+  // COMMENT FORM
+  .comment-form {
+    height: 100%;
+    position: relative;
+    flex-grow: 1;
+    margin-left: 10px;
+    input {
+      border: 1px solid rgba(0,0,0,0.2);
+      height: 40px;
+      font-size: 12px;
+      border-radius: 20px;
+    }
+    .comment-button {
+      position: absolute;
+      right: 0;
+      height: 40px;
+      padding: 0;
+      background: none;
+      border: none;
+      color: rgba(0,0,0,0.5);
+      padding-right: 15px;
+    }
+  }
 }
 
 
@@ -200,6 +245,13 @@ $brand-text: #000;
   .profile-image {
     height: 150px;
     width: 150px;
+  }
+  .profile-rule {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    height: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
   .user-stats {
     font-size: 20px;
@@ -211,6 +263,11 @@ $brand-text: #000;
       margin-left: 40px;
     }
   }
+
+  .user-controls {
+    margin-top: 20px;
+  }
+
   .post-wrapper {
     height: auto;
     width: 500px;
@@ -241,18 +298,3 @@ $brand-text: #000;
   }
 }
 
-// COMMENT FORM
-.comment-form {
-  height: 100%;
-  textarea {
-    border: 1px solid rgba(0,0,0,0.2);
-    height: 20px;
-    font-size: 12px;
-    border-radius: 50%;
-    display: flex;
-  }
-  .comment-button {
-    height: 40px;
-    padding: 0;
-  }
-}

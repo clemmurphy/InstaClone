@@ -108,7 +108,7 @@ const UserProfile = ({ loggedIn }) => {
               </div>
             </div>
           </div>
-          <div className="user-controls mt-2">
+          <div className="user-controls">
             <h2 className="profile-username">{userDetails.username}</h2>
             <div className="follow-button">
               {displayFollowButtons()}
@@ -117,6 +117,7 @@ const UserProfile = ({ loggedIn }) => {
         </div>
         { userPosts ? 
           <div className="user-posts d-flex flex-wrap">
+            <div className="profile-rule"></div>
             { userPosts.length > 0 ? 
               userPosts.map(post => {
                 return (

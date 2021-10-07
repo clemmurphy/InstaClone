@@ -36,9 +36,9 @@ function Navbar({ loggedIn, setLoggedIn }) {
           { loggedIn ?
             <>
               <li className='nav-item ms-3'><Link to={'/t'}><i className="fas fa-images"></i></Link></li>
-              <li className='nav-item ms-3'><Link to={'/add-post'}><i className="fas fa-plus-square"></i></Link></li>
               <li className='nav-item ms-3'><Link to={`/u/${username}`}><i className="fas fa-user"></i></Link></li>
-              <li className='nav-item ms-3'><button onClick={logOut} className="btn btn-primary"><i className="fas fa-sign-out-alt"></i></button></li>
+              <li className='nav-item ms-3'><button onClick={logOut} className="logout-button"><i className="fas fa-sign-out-alt"></i></button></li>
+              <li className='nav-item ms-3'><Link to={'/add-post'}><i className="fas fa-plus-square"></i></Link></li>
             </>
             :
             <>

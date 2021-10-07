@@ -23,9 +23,7 @@ const InlinePost = ({ post }) => {
           <img style={{ width: '100%'}} src={post.contentUrl} alt={post.caption} />
         </div>
         <div className="card-body post-content-wrapper">
-          <p className="post-likes-text"><span>{post.likes.length}</span> likes</p>
-          <p><span className="inline-username"><Link to={`/u/${post.owner.username}`}>{post.owner.username}</Link></span> { post.caption }</p>
-          <PostControls post={post} />
+          <PostControls post={post}/>
           { post.comments && post.comments.map(comment => {
             return <p>{comment.content}</p>
           })}
