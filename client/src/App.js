@@ -9,6 +9,7 @@ import Register from './components/auth/Register'
 import Post from './components/post/Post'
 import Timeline from './components/Timeline'
 import Footer from './components/Footer'
+import UserProfile from './components/user/UserProfile'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -56,7 +57,9 @@ function App() {
       <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Switch>
         <Route exact path='/'>
-          <Home />
+          <Home 
+            loggedIn={loggedIn}
+          />
         </Route>
         <Route path='/login'>
           <Login
@@ -77,8 +80,13 @@ function App() {
         <Route path='/p/:id'>
           <Post />
         </Route>
+        <Route path='/u/:username'>
+          <UserProfile
+            loggedIn={loggedIn}
+          />
+        </Route>
         <Route path='/t'>
-        <Timeline />
+          <Timeline />
         </Route>
       </Switch>
     <Footer />

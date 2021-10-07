@@ -20,13 +20,12 @@ const handleComment = async (e) => {
   } catch (error) {
     console.log(error)
   }
-
 }
 console.log(comment)
   return (
-    <form onSubmit={handleComment} className="d-flex justify-content-between">
-      <textarea onInput={handleChange} name="comment" className="fomr-control flex-grow-1"></textarea>
-      <button style={{ marginLeft: '10px'}} className="btn btn-dark btn-lg">Comment</button>
+    <form className="comment-form d-flex justify-content-between" onSubmit={handleComment}>
+      <input className="form-control" placeholder="Add a comment..." onInput={handleChange}></input>
+      <button className="comment-button btn btn-dark"><i className="far fa-comment"></i></button>
     </form>
   )
 }

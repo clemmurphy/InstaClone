@@ -20,6 +20,7 @@ const seedDatabase = async () => {
     console.log(`🧑 Created ${users.length} new users`)
 
     const posts = await Post.create(postData)
+    await Post.updateMany({ owner: users[0] })
     console.log(`✍ Created ${posts.length} new posts`)
 
     const comments = await Comment.create(commentData)

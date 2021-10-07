@@ -1,22 +1,16 @@
+$post-width: 33%;
+$bg-color: #eee;
+$brand-text: #000;
+
 .profile-image {
-  height: 250px;
-  width: 250px;
+  height: 80px;
+  width: 80px;
   overflow: hidden;
   cursor: pointer;
 }
 
 .form-control-file {
   display: none;
-}
-a {
-  text-decoration: none;
-  color: black
-}
-// make the color white for the login button in the homepage
-.btn-dark {
-  a {
-    color: white;
-  }
 }
 
 // margin right for login button in the homepage
@@ -29,9 +23,9 @@ a {
   height: 400px;
   background-size: cover;
 }
+
 // for the buttons in the homepage
 .mt-7{
-
   margin-top: 125px;
 }
 
@@ -39,13 +33,290 @@ a {
 .footer-heart {
   color: red;
 }
-form {
 
-  .post-img {
-    width: 50px !important;
-    height: 50px !important;
-  }
-}
 .mr {
   margin-right: 10px;
+}
+
+// USER PROFILE
+
+.user-profile-wrapper {
+  width: 100vw;
+  padding-top: 100px;
+  .user {
+    width: 80%;
+    max-width: 1000px;
+  }
+  .user-stat {
+    margin-left: 10px;
+    .user-stat-text {
+      font-size: 14px;
+    }
+    p {
+      height: 30px;
+      margin-bottom: 0;
+    }
+  }
+  .profile-rule {
+    display: none;
+  }
+  .user-posts {
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    align-items: space-between;
+    justify-content: space-between;
+    text-align: center;
+    .post-thumbnail {
+      width: $post-width;
+      height: calc($post-width)
+    }
+    .post-thumbnail {
+      position: relative;
+    }
+    .post-thumbnail:hover .post-thumbnail-stats {
+      display: flex;
+    }
+    .post-thumbnail-stats {
+      height: calc(100% - (100vw * 0.01));
+      width: 100%;
+      display: none;
+      position: absolute;
+      top:0;
+      left: 0;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.4);
+      p {
+        font-size: 30px;
+        color: white;
+        font-weight: bold;
+      }
+    }
+    .post-thumbnail img {
+      width: 100%;
+      height: 100%;
+      margin-bottom: calc(100vw * 0.01);
+    }
+  }
+  .profile-username {
+    align-self: flex-start;
+    margin: 0;
+  }
+  .user-controls {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+// NAVBAR
+
+.navbar{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  position: fixed;
+  top: 0;
+  margin: 0 auto;
+  width: 100vw;
+  z-index: 20;
+  padding: 10px;
+    a {
+    text-decoration: none;
+    color: $brand-text;
+  }
+  color: $brand-text;
+  .logout-button {
+    border: none;
+    background: none;
+    color: $brand-text;
+  }
+}
+
+// LOGIN FORM
+
+.login-form {
+  height: 100vh;
+  padding-top: 120px;
+  form {
+    width: 60%;
+  }
+  .login-button {
+    width: 100%;
+  }
+}
+
+// REGISTER FORM
+
+.registration-image {
+  height: 200px;
+  width: 200px;
+}
+
+.profile-picture label {
+  text-align: center;
+}
+
+.register-button {
+  width: 100%;
+}
+
+// TIMELINE
+
+.timeline-wrapper {
+  padding-top: 80px;
+  width: 100vw;
+  background-color: $bg-color;
+  .post-wrapper {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border: none;
+  }
+}
+
+.post-wrapper {
+  padding: 0;
+  border-radius: 5;
+  .post-likes-text {
+    font-weight: bold;
+  }
+  .post-image-container {
+    img {
+      height: 100%;
+    }
+  }
+  .post-content-wrapper {
+    padding-bottom: 0px;
+    .post-date {
+    font-size: 0.6rem;
+    text-decoration: none;
+    color: rgba(0,0,0,0.5);
+    p {
+      margin-top: 10px;
+    }
+  }
+}
+  .post-user {
+    margin: 0;
+    padding: 10 0;
+    .post-username {
+      font-weight: bold;
+      text-decoration: none;
+      color: black;
+      height: 60px;
+      p {
+        margin-bottom: 0;
+        margin-left: 10px;
+      }
+    }
+  }
+  .inline-username {
+    font-weight: bold;
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+}
+
+.post-caption {
+  font-size: 14px;
+}
+
+// POST CONTROLS
+
+.post-controls {
+  color: black;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  .like-button {
+    font-size: 30px;
+  }
+  .liked-heart {
+    color:red;
+  }
+  // COMMENT FORM
+  .comment-form {
+    height: 100%;
+    position: relative;
+    flex-grow: 1;
+    margin-left: 10px;
+    input {
+      border: 1px solid rgba(0,0,0,0.2);
+      height: 40px;
+      font-size: 12px;
+      border-radius: 20px;
+    }
+    .comment-button {
+      position: absolute;
+      right: 0;
+      height: 40px;
+      padding: 0;
+      background: none;
+      border: none;
+      color: rgba(0,0,0,0.5);
+      padding-right: 15px;
+    }
+  }
+}
+
+
+@media (min-width:600px) {
+  .profile-image {
+    height: 150px;
+    width: 150px;
+  }
+  .profile-rule {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    height: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .user-stats {
+    font-size: 20px;
+    .user-stat-text {
+      font-size: 20px;
+      margin-top: 0;
+    }
+    .user-stat {
+      margin-left: 40px;
+    }
+  }
+
+  .user-controls {
+    margin-top: 20px;
+  }
+
+  .post-wrapper {
+    height: auto;
+    width: 500px;
+    .post-image-container {
+      height: 500px;
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
+
+// SINGLE POST PAGE
+
+.single-post-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: $bg-color;
+  .post-wrapper {
+    margin-top: 80px;
+    border: none;
+    .card-header {
+      display: none;
+    }
+  }
 }

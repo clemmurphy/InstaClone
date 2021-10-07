@@ -34,34 +34,46 @@ export const getSingleUser = async (req, res) => {
 // Create a new user using request data
 export const createNewUser = async (req, res) => {
   try {
-    console.log(req.body)
+    if (!req.body.username) throw new Error('Please provide a username')
+    if (!req.body.email) throw new Error('Please provide an email address')
+    if (!req.body.password) throw new Error('Please provide a password')
+    if (req.body.password !== req.body.passwordConfirmation) throw new Error('Passwords do not match!')
+    if (!req.body.profilePicture) throw new Error('Please provide a profile picture')
+    if (await User.find({ username: req.body.username }).length > 0) throw new Error('User with that username already exists!')
+    if (await User.find({ email: req.body.email }).length > 0) throw new Error('User with that email already exists!')
     const userToCreate = await User.create(req.body)
     console.log('User created')
     return res.status(202).json({ message: `🎶 New user created! Welcome ${userToCreate.username}` })
   } catch (err) {
-    console.log('🚫 Error creating new user', err)
-    return res.status(422).json('Unable to create new user')
+    console.log('🚫 Error creating new user')
+    console.log(err.message)
+    return res.status(422).json(err.message)
   }
 }
 
 // Log a user in by username using json web token
 export const loginUser = async (req, res) => {
   try {
+    if (!req.body.username) throw new Error('Please provide a username')
+    if (!req.body.password) throw new Error('Please provide a password')
     const userToLogin = await User.findOne({ username: req.body.username })
     // Check if passwords match TODO - break out into two functions for better error messages
     if (!userToLogin || !userToLogin.validatePassword(req.body.password)) {
       console.log('🚫 Passwords do not match!')
-      throw new Error()
+      throw new Error('Incorrect password')
     }
     // Generate login token
     const token = jwt.sign({ sub: userToLogin._id }, process.env.secret, { expiresIn: '7 days' })
     console.log('User login token:', token)
     return res.status(200).json({
       message: `Welcome back ${userToLogin.username}`,
-      token
+      token,
+      id: userToLogin._id,
+      username: userToLogin.username
     })
   } catch (err) {
     console.log('🚫 Error logging in')
-    return res.status(422).json('Error logging in')
+    console.log(err.message)
+    return res.status(422).json(err.message)
   }
 }
