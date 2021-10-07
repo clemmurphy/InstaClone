@@ -2,9 +2,9 @@ import React from 'react'
 
 function CommentForm() {
   return (
-    <form className="d-flex justify-content-between">
-      <textarea className="form-control flex-grow-1"></textarea>
-      <button style={{ marginLeft: '10px'}} className="btn btn-dark btn-lg"><i className="far fa-comment"></i></button>
+    <form className="comment-form d-flex justify-content-between">
+      <input className="form-control" placeholder="Add a comment"></input>
+      <button className="comment-button btn btn-dark"><i className="far fa-comment"></i></button>
     </form>
   )
 }

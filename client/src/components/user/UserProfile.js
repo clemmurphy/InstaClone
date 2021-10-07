@@ -34,6 +34,7 @@ const UserProfile = ({ loggedIn }) => {
       getUserDetails()
     } catch (err) {
       console.log(err.request.response)
+      setFollowError(err.request.response)
       console.log('🚫 Couldn\'t follow user')
     }
   }
@@ -48,6 +49,7 @@ const UserProfile = ({ loggedIn }) => {
       getUserDetails()
     } catch (err) {
       console.log(err)
+      setFollowError(err.request.response)
       console.log('🚫 Couldn\'t unfollow user')
     }
   }

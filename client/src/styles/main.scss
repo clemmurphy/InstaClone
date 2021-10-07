@@ -1,4 +1,6 @@
 $post-width: 33%;
+$bg-color: #eee;
+$brand-text: #000;
 
 .profile-image {
   height: 80px;
@@ -10,6 +12,11 @@ $post-width: 33%;
 .form-control-file {
   display: none;
 }
+
+.liked-heart {
+  color:red;
+}
+
 
 // USER PROFILE
 
@@ -82,6 +89,8 @@ $post-width: 33%;
   }
 }
 
+// NAVBAR
+
 .navbar{
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   position: fixed;
@@ -93,7 +102,10 @@ $post-width: 33%;
     a {
     text-decoration: none;
   }
+  color: $brand-text;
 }
+
+// LOGIN FORM
 
 .login-form {
   height: 100vh;
@@ -106,6 +118,7 @@ $post-width: 33%;
   }
 }
 
+// REGISTER FORM
 
 .registration-image {
   height: 200px;
@@ -120,17 +133,21 @@ $post-width: 33%;
   width: 100%;
 }
 
+// TIMELINE
+
 .timeline-wrapper {
   padding-top: 80px;
   width: 100vw;
-  background-color: #EEE;
+  background-color: $bg-color;
+  .post-wrapper {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border: none;
+  }
 }
 
 .post-wrapper {
-  border: 1px solid rgba(0,0,0,0.1);
   padding: 0;
   border-radius: 5;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   .post-likes-text {
     font-weight: bold;
   }
@@ -173,7 +190,10 @@ $post-width: 33%;
   }
 }
 
-
+.post-controls {
+  height: 80px;
+  color: black;
+}
 
 
 @media (min-width:600px) {
@@ -192,7 +212,7 @@ $post-width: 33%;
     }
   }
   .post-wrapper {
-    height: 800px;
+    height: auto;
     width: 500px;
     .post-image-container {
       height: 500px;
@@ -201,5 +221,38 @@ $post-width: 33%;
         width: 100%;
       }
     }
+  }
+}
+
+// SINGLE POST PAGE
+
+.single-post-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: $bg-color;
+  .post-wrapper {
+    margin-top: 80px;
+    border: none;
+    .card-header {
+      display: none;
+    }
+  }
+}
+
+// COMMENT FORM
+.comment-form {
+  height: 100%;
+  textarea {
+    border: 1px solid rgba(0,0,0,0.2);
+    height: 20px;
+    font-size: 12px;
+    border-radius: 50%;
+    display: flex;
+  }
+  .comment-button {
+    height: 40px;
+    padding: 0;
   }
 }
