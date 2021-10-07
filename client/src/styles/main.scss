@@ -29,11 +29,6 @@ $brand-text: #000;
   margin-top: 125px;
 }
 
-// heart span in the footer
-.footer-heart {
-  color: red;
-}
-
 .mr {
   margin-right: 10px;
 }
@@ -196,6 +191,44 @@ $brand-text: #000;
       margin-top: 10px;
     }
   }
+  .first-comment {
+    font-size: 14px;
+    margin-top: 5px;
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+    .comment-dots {
+      position: absolute;
+      top: 20%;
+      right: 0;
+    }
+    a {
+      text-decoration: none;
+      color: $brand-text;
+      font-weight: bold;
+      font-size: 14px;
+    }
+  }
+  .comment-feed {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .comment-wrapper {
+      width: 100%;
+      font-size: 14px;
+      margin-top: 5px;
+      a {
+        text-decoration: none;
+        color: $brand-text;
+        font-weight: bold;
+        font-size: 14px;
+      }
+      span {
+        font-size: 14px;
+      }
+    }
+  }
 }
   .post-user {
     margin: 0;
@@ -263,6 +296,57 @@ $brand-text: #000;
   }
 }
 
+// SINGLE POST PAGE
+
+.single-post-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: $bg-color;
+  .post-wrapper {
+    margin-top: 80px;
+    border: none;
+    .card-header {
+      display: none;
+    }
+  }
+}
+
+// ADD POST
+.add-post-container {
+  margin-top: 80px;
+  height: 100vh;
+  .card {
+    margin-top: 20px;
+  }
+  .new-post-upload {
+    height: 100%;
+    width: 100%;
+  }
+  .comment-form {
+    width: 100%;
+    margin-top: 20px;
+    button {
+      margin-top: 5px;
+    }
+  }
+}
+
+// FOOTER
+$footer-height: 80px;
+.footer {
+  height: $footer-height;
+  // heart span in the footer
+  .footer-heart {
+    color: red;
+  }
+}
+
+// HOME PAGE
+.home-page {
+  min-height: calc(100vh - $footer-height);
+}
 
 @media (min-width:600px) {
   .profile-image {
@@ -300,23 +384,6 @@ $brand-text: #000;
         height: 100%;
         width: 100%;
       }
-    }
-  }
-}
-
-// SINGLE POST PAGE
-
-.single-post-wrapper {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background-color: $bg-color;
-  .post-wrapper {
-    margin-top: 80px;
-    border: none;
-    .card-header {
-      display: none;
     }
   }
 }

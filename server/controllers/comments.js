@@ -14,21 +14,21 @@ export const getAllComments = async (_req, res) => {
 
 // add new comment
 export const addComment = async (req, res) => {
-  try { 
-    const { id } = req.params
-    const findPost = await Post.findById(id)
-    const userId = await req.currentUser._id
+  try {
+    if (!req.body.content) throw new Error('Please provide comment text')
+    if (!req.body.owner) throw new Error('Invalid signin token!')
+    const findPost = await Post.findById(req.body.parentPost)
     const newComment = await Comment.create(
       { content: req.body.content,
-        owner: userId,
-        parentPost: findPost 
+        owner: req.body.owner,
+        parentPost: findPost
       })
-    findPost.comments.push(newComment.content)
+    await Post.updateOne({ _id: findPost._id }, { comments: [ ...findPost.comments, newComment ] })
     res.status(201).json(newComment)
   } catch (error) {
     console.log(error)
-    console.log('couldn\'t add comment')
-    return res.status(422).json(error)
+    console.log('Couldn\'t add comment', error.message)
+    return res.status(422).json(error.message)
   }
 }
 

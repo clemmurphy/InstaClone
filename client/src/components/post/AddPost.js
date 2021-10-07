@@ -1,9 +1,9 @@
 import React from 'react'
-import defaultImage from '../../images/default-profile.jpg'
+import defaultImage from '../../images/post-placeholder.png'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 
-function AddPost( { timeLine, setTimeLine}) {
+function AddPost() {
   const history = useHistory()
   const [postData, setPostData] = React.useState({})
   const [postImg, setPostImg] = React.useState(undefined)
@@ -39,37 +39,34 @@ function AddPost( { timeLine, setTimeLine}) {
     const getTokenFromLocalStorage = window.localStorage.getItem('token')
     event.preventDefault()
     try {
-    const { data } = await axios.post( '/api/p',
+    await axios.post( '/api/p',
         postData,
         { headers: { Authorization: `Bearer ${getTokenFromLocalStorage}` } }
       )
-      console.log(data)
-      setTimeLine([ ...timeLine, postData ])
       history.push('/t')
     } catch (err) {
       console.log('Unable to add post', err)
     }
   }
   return (
-    <div className="container my-3">
-        <div className="row">
-          <div className="col-12 col-md-6">
-              <div className="card p-2">
-                <form onSubmit={handlePost}className="d-flex justify-content-between">
-                  <input type="file" name="contentUrl" id="contentUrl" className="form-control-file" onChange={handleImageUrl}></input>
-                  <label htmlFor="contentUrl">
-                    {postImg ? <img className="rounded-circle post-img img-thumbnail mr" src={postImg} alt="post picutre" />
-                    :
-                    <img className="rounded-circle post-img img-thumbnail mr" src={defaultImage} alt="post picutre" />
-                    }
-                  </label>
-                  <textarea  name="caption" onInput={handleChange} className="flex-grow-1 mr"></textarea>
-                  <button className="btn btn-lg btn-dark">Add Post</button>
-                </form>
-              </div>
+    <div className="add-post-container container">
+      <h2>Add New Post</h2>
+      <div className="card p-2">
+        <form onSubmit={handlePost}className="d-flex flex-column justify-content-between align-items-center">
+          <input type="file" name="contentUrl" id="contentUrl" className="form-control-file" onChange={handleImageUrl}></input>
+          <label htmlFor="contentUrl">
+            {postImg ? <img className="new-post-upload post-img" src={postImg} alt="post picutre" />
+            :
+            <img className="new-post-upload post-img" src={defaultImage} alt="post picutre" />
+            }
+          </label>
+          <div className="comment-form d-flex flex-column justify-content-between">
+            <textarea className="form-control" placeholder="Add a caption..." name="caption" onInput={handleChange}></textarea>
+            <button className="comment-button btn btn-dark" formAction="submit"><i className="fas fa-plus-square"></i> Add Post</button>
           </div>
-        </div>
+        </form>
       </div>
+    </div>
   )
 }
 

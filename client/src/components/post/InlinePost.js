@@ -23,10 +23,7 @@ const InlinePost = ({ post }) => {
           <img style={{ width: '100%'}} src={post.contentUrl} alt={post.caption} />
         </div>
         <div className="card-body post-content-wrapper">
-          <PostControls post={post}/>
-          { post.comments && post.comments.map(comment => {
-            return <p>{comment.content}</p>
-          })}
+          <PostControls post={post} id={post._id}/>
           <Link to={`/p/${post._id}`} className="post-date"><p>{postDate.toLocaleTimeString()} {postDate.toLocaleDateString()}</p></Link>
         </div>
       </div>

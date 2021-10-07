@@ -6,7 +6,7 @@ import homeImage from '../images/home-image.jpg'
 
 function Home() {
   return (
-    <div className="container flex-grow-1">
+    <div className="home-page container flex-grow-1">
       <h1 className="my-4">Welcome to InstaClone</h1>
       <div className="row">
         <div className="col-12 col-md-6">

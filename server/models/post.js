@@ -13,7 +13,14 @@ const postSchema = new mongoose.Schema({
 // Always populate owner when you find all posts
 postSchema.pre('find', function() {
   this.populate('owner')
-  
+  this.populate('comments')
 })
+
+// Always populate owner when you find all posts
+postSchema.pre('findOne', function() {
+  this.populate('owner')
+  this.populate('comments')
+})
+
 
 export default mongoose.model('Post', postSchema)

@@ -14,14 +14,16 @@ export const getAllPosts = async (_req, res) => {
 
 // add new post without the user authentication and owner verification
 export const addPost = async (req, res) => {
-  try { 
+  try {
+    if (!req.body.contentUrl) throw new Error('Please provide an image!')
+    if (!req.body.caption) throw new Error('Please provide a caption!')
     const postWithOwner = { ...req.body, owner: req.currentUser._id  }
     const newPost = await Post.create(postWithOwner)
     res.status(201).json(newPost)
-  } catch (error) {
-    console.log(error)
-    console.log('couldn\'t add post')
-    return res.status(422).json(error)
+  } catch (err) {
+    console.log(err.message)
+    console.log('Couldn\'t add post')
+    return res.status(422).json(err.message)
   }
 }
 
@@ -38,8 +40,6 @@ export const getSinglePostById = async (req,res) => {
     return res.status(404).json({ message: 'Post not found' })
   }
 }
-
-// TODO - add user verification
 
 // update post without user authentication and owner verification 
 export const updatePost = async (req,res) =>{

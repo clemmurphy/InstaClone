@@ -10,6 +10,7 @@ import Post from './components/post/Post'
 import Timeline from './components/Timeline'
 import Footer from './components/Footer'
 import UserProfile from './components/user/UserProfile'
+import AddPost from './components/post/AddPost'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -79,6 +80,9 @@ function App() {
         </Route>
         <Route path='/p/:id'>
           <Post />
+        </Route>
+        <Route path='/add-post'>
+          <AddPost />
         </Route>
         <Route path='/u/:username'>
           <UserProfile
