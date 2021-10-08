@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
   profilePicture: { type: String, required: true },
   password: { type: String, required: true },
   followers: [ { type: mongoose.Schema.ObjectId, ref: 'User' } ],
-  following: [ { type: mongoose.Schema.ObjectId, ref: 'User' } ]
+  following: [ { type: mongoose.Schema.ObjectId, ref: 'User' } ],
+  isVerified: { type: Boolean, default: false }
 })
 
 // Virtual field to verify password confirmation when password is created

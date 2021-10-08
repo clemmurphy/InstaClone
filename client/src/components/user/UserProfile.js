@@ -112,7 +112,7 @@ const UserProfile = ({ loggedIn }) => {
             </div>
           </div>
           <div className="user-controls">
-            <h2 className="profile-username">{userDetails.username}</h2>
+            <h2 className="profile-username">{userDetails.username}{ userDetails.isVerified && <span className="verified-badge"><i className="fas fa-check-circle"></i></span> }</h2>
             <div className="follow-button">
               {displayFollowButtons()}
             </div>

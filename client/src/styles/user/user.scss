@@ -38,7 +38,6 @@
     max-width: 1000px;
     height: auto;
     align-items: space-between;
-    justify-content: space-between;
     text-align: center;
     .placeholder-content {
       height: calc(100vh - 200px);
@@ -102,4 +101,10 @@
       width: 100px;
     }
   }
+}
+
+.verified-badge {
+  font-size: 16px;
+  margin-left: 5px;
+  vertical-align: middle;
 }

@@ -32,7 +32,7 @@ function Navbar({ loggedIn, setLoggedIn }) {
     <header>
       <nav className='navbar'>
         <div className='container'>
-          <div className='navbar-brand'> <Link to={ loggedIn ? '/t' : '/' }><i className="fas fa-camera-retro nav-icon"></i> InstaClone</Link></div>
+          <div className='navbar-brand'><Link to={ loggedIn ? '/t' : '/' }><i className="fas fa-camera-retro nav-icon"></i> InstaClone</Link></div>
           <ul className='navbar-nav flex-row align-items-center'>
           { loggedIn ?
             <>

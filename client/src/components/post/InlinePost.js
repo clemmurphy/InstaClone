@@ -14,7 +14,7 @@ const InlinePost = ({ post }) => {
           <>
             <Link to={`/u/${post.owner.username}`} className="post-username d-flex align-items-center">
               <img src={post.owner.profilePicture} alt={post.owner.username} className="post-profile-picture profile-picture-border rounded-circle" />
-              <p>{post.owner.username}</p>
+              <p>{post.owner.username}{ post.owner.isVerified && <span className="verified-badge"><i className="fas fa-check-circle"></i></span> }</p>
             </Link>
           </>
         }

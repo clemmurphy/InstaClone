@@ -1,11 +1,23 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import homeImage from '../images/timeline-mockup.png'
+import homeImage from '../images/home-image.png'
 
 function Home() {
   return (
     <div className="home-page">
       <div className="homepage-content-wrapper">
+      <ul className='circles'>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
         <div className="homepage-content">
           <img className="home-image" src={homeImage} alt="people" />
         </div>

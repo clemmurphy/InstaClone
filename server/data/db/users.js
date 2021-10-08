@@ -4,14 +4,16 @@ export default [
     email: 'clem@email.com',
     profilePicture: 'https://res.cloudinary.com/insta-cl0ne/image/upload/v1633517789/insta-clone/ny2flt4rn1if0gcbxpoc.png',
     password: 'pass',
-    passwordConfirmation: 'pass'
+    passwordConfirmation: 'pass',
+    isVerified: true
   },
   {
     username: 'bader',
     email: 'bader@email.com',
     profilePicture: 'https://res.cloudinary.com/insta-cl0ne/image/upload/v1633634433/insta-clone/emnwtrgfzv3la9ttrefy.png',
     password: 'pass',
-    passwordConfirmation: 'pass'
+    passwordConfirmation: 'pass',
+    isVerified: true
   },
   {
     username: 'jesse',
