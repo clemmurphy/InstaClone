@@ -5,10 +5,10 @@
   background-color: $bg-color;
   position: fixed;
   top: 0;
-  margin: 0 auto;
+  margin: 0;
   width: 100vw;
   z-index: 20;
-  padding: 10px 5px;
+  padding: 10px 0px;
   .navbar-brand {
     background-color: $bg-color;
     transition: 0.3s;
@@ -21,10 +21,13 @@
       }
     .nav-icon {
       margin-right: 5px;
+      &:last-child {
+        margin-right: 0px;
+      }
     }
     a {
       font-family: 'Sacramento', cursive;
-      font-size: 28px;
+      font-size: 26px;
     }
   }
   .navbar-nav {

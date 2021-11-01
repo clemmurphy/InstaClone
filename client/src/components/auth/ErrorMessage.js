@@ -13,7 +13,7 @@ const ErrorMessage = ({ title, content }) => {
 
   return (
     <div className="card text-white bg-danger mb-3 mt-4 w-100">
-      <div className="card-header"><i class="fas fa-exclamation-triangle"></i> Error!</div>
+      <div className="card-header"><i className="fas fa-exclamation-triangle"></i> Error!</div>
       <div className="card-body">
         <h5 className="card-title">{capitalize(title)}</h5>
         <p className="card-text">{content}</p>

@@ -2,6 +2,7 @@
 .home-page {
   padding-top: 80px;
   min-height: calc(100vh - $footer-height);
+  min-width: 100vw;
   display: flex;
   align-items: center;
   background-color: $bg-color;
@@ -16,7 +17,7 @@
     .homepage-content {
       height: 100%;
       margin: 10px;
-      width: 300px;
+      // width: auto;
       text-align: center;
       z-index: 2;
       p {
@@ -35,7 +36,7 @@
     font-size: 60px;
   }
   .home-image{
-    height: 600px;
+    height: 400px;
     background-size: cover;
     width: 100%;
     z-index: 2;
@@ -80,10 +81,12 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 100%;
+	width: 90vw;
 	height: 60vh;
 	z-index: 0;
 }
+
+$dot-opacity: 0.17;
 
 .circles li {
 	position: absolute;
@@ -103,8 +106,7 @@
 	animation-delay: 0s;
 	animation-duration: 20s;
 	border-radius: 50%;
-	border-top-left-radius: 0 !important;
-	background: rgba(255, 199, 38, 0.1);
+	background: rgba(255, 199, 38, $dot-opacity);
 }
 
 .circles li:nth-child(2) {
@@ -114,8 +116,7 @@
 	animation-delay: 0s;
 	animation-duration: 25s;
 	border-radius: 50%;
-	border-top-left-radius: 0 !important;
-	background: rgba(255, 97, 36, 0.1);
+	background: rgba(255, 97, 36, $dot-opacity);
 }
 
 .circles li:nth-child(3) {
@@ -125,8 +126,7 @@
 	animation-delay: 0s;
 	animation-duration: 20s;
 	border-radius: 50%;
-	border-top-left-radius: 0 !important;
-	background: rgba(255, 199, 38, 0.1);
+	background: rgba(255, 199, 38, $dot-opacity);
 }
 
 .circles li:nth-child(4) {
@@ -136,8 +136,7 @@
 	animation-delay: 0s;
 	animation-duration: 15s;
 	border-radius: 50%;
-	border-top-left-radius: 0 !important;
-	background: rgba(255, 97, 36, 0.1);
+	background: rgba(255, 97, 36, $dot-opacity);
 }
 
 .circles li:nth-child(5) {
@@ -147,8 +146,7 @@
 	animation-delay: 0s;
 	animation-duration: 20s;
 	border-radius: 50%;
-	border-top-left-radius: 0 !important;
-	background: rgba(255, 199, 38, 0.1);
+	background: rgba(255, 199, 38, $dot-opacity);
 }
 
 .circles li:nth-child(6) {
@@ -158,8 +156,7 @@
 	animation-delay: 0s;
 	animation-duration: 25s;
 	border-radius: 50%;
-	border-top-left-radius: 0 !important;
-	background: rgba(255, 97, 36, 0.1);
+	background: rgba(255, 97, 36, $dot-opacity);
 }
 
 .circles li:nth-child(7) {
@@ -169,8 +166,7 @@
 	animation-delay: 0s;
 	animation-duration: 30s;
 	border-radius: 50%;
-	border-top-left-radius: 0 !important;
-	background: rgba(255, 199, 38, 0.1);
+	background: rgba(255, 199, 38, $dot-opacity);
 }
 
 .circles li:nth-child(8) {
@@ -180,8 +176,7 @@
 	animation-delay: 0s;
 	animation-duration: 35s;
 	border-radius: 50%;
-	border-top-left-radius: 0 !important;
-	background: rgba(255, 97, 36, 0.1);
+	background: rgba(255, 97, 36, $dot-opacity);
 }
 
 .circles li:nth-child(9) {
@@ -191,8 +186,7 @@
 	animation-delay: 0s;
 	animation-duration: 40s;
 	border-radius: 50%;
-	border-top-left-radius: 0 !important;
-	background: rgba(255, 199, 38, 0.1);
+	background: rgba(255, 199, 38, $dot-opacity);
 }
 
 .circles li:nth-child(10) {
@@ -202,8 +196,17 @@
 	animation-delay: 0s;
 	animation-duration: 45s;
 	border-radius: 50%;
-	border-top-left-radius: 0 !important;
-	background: rgba(255, 97, 36, 0.1);
+	background: rgba(255, 97, 36, $dot-opacity);
+}
+
+.circles li:nth-child(11) {
+	left: 35%;
+	width: 20px;
+	height: 20px;
+	animation-delay: 0s;
+	animation-duration: 45s;
+	border-radius: 50%;
+	background: rgba(255, 97, 36, $dot-opacity);
 }
 
 @keyframes animate {

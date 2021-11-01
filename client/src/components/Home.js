@@ -17,6 +17,7 @@ function Home() {
         <li></li>
         <li></li>
         <li></li>
+        <li></li>
       </ul>
         <div className="homepage-content">
           <img className="home-image" src={homeImage} alt="people" />
