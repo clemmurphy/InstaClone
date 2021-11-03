@@ -4,9 +4,11 @@ import dotenv from 'dotenv'
 dotenv.config()
 import router from './config/router.js'
 import path from 'path-posix'
+import { fileURLToPath } from 'url'
 
 const app = express()
 const port = process.env.PORT
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const startServer = async () => {
   try {
