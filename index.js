@@ -33,7 +33,7 @@ const startServer = async () => {
       app.use(express.static('client/build'))  // set static folder 
       //returning frontend for any route other than api 
       app.get('*',(_req, res)=>{     
-        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))    
+        res.sendFile(path.join(__dirname, 'client', 'public', 'index.html'))    
       })
     }
     
