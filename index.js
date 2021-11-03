@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 dotenv.config()
 import router from './config/router.js'
-import path from 'path/posix'
+import path from 'path-posix'
 
 const app = express()
 
