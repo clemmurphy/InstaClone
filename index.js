@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 dotenv.config()
 import router from './config/router.js'
+import path from 'path/posix'
 
 const app = express()
 
@@ -16,13 +17,22 @@ const startServer = async () => {
     app.use(express.json())
     
     // Router
-    app.use('/api',router)
+    app.use('/api', router)
 
     // Log every request
     app.use((req, _res, next) => {
       console.log(`🚨 Request received: ${req.method} - ${req.url}`)
       next()
     })
+
+    // server static assets if in production
+    if (process.env.NODE_ENV === 'production'){    
+      app.use(express.static('client/build'))  // set static folder 
+      //returning frontend for any route other than api 
+      app.get('*',(_req, res)=>{     
+        res.sendFile(path.resolve(__dirname,'client','build', 'index.html' ))    
+      })
+    }
     
     // Catcher
     app.use((_req, res) => {
