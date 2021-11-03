@@ -14,7 +14,8 @@
   },
   "scripts": {
     "serve": "npx nodemon index.js",
-    "seed": "node ./data/seed.js"
+    "seed": "node ./data/seed.js",
+    "start": "yarn start"
   },
   "type": "module"
 }
