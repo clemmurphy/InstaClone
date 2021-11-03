@@ -6,7 +6,7 @@ import router from './config/router.js'
 import path from 'path-posix'
 
 const app = express()
-const port = process.env.port || 4000
+const port = process.env.port
 
 const startServer = async () => {
   try {
