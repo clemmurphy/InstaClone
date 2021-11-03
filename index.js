@@ -6,6 +6,7 @@ import router from './config/router.js'
 import path from 'path-posix'
 
 const app = express()
+const port = process.env.port || 4000
 
 const startServer = async () => {
   try {
@@ -40,8 +41,8 @@ const startServer = async () => {
     })
 
     // Start listening for requests
-    app.listen(process.env.port, () => {
-      console.log(`🚀 Server up and running on port ${process.env.port}`)
+    app.listen(port, '0.0.0.0', () => {
+      console.log(`🚀 Server up and running on port ${port}`)
     })
   } catch (err) {
     console.log('🆘 Something went wrong - couldnt connect')
