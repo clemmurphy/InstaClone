@@ -1,4 +1,4 @@
-import Comment from '../models/comment.js.js'
+import Comment from '../models/comment.js'
 import Post from '../models/post.js'
 
 // get all comments 
