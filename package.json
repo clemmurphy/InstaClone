@@ -16,7 +16,8 @@
   "scripts": {
     "serve": "npx nodemon index.js",
     "seed": "node ./data/seed.js",
-    "start": "npx nodemon index.js"
+    "start": "npx nodemon index.js",
+    "heroku-postbuild": "cd client && yarn && yarn run build"
   },
   "engines": {
     "node": "14.x"
