@@ -19,5 +19,8 @@
     "seed": "node ./data/seed.js",
     "start": "npx nodemon index.js"
   },
+  "engines": {
+    "node": "14.x"
+  },
   "type": "module"
 }
