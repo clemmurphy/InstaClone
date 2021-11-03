@@ -14,8 +14,6 @@ import AddPost from './components/post/AddPost'
 import dotenv from 'dotenv'
 dotenv.config()
 
-
-
 function App() {
 
   // Logged in status
